@@ -3,31 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eyouel Exchange — Crypto Secrets Unveiled</title>
-  <meta name="description" content="EyouelExchange — daily cryptocurrency market analysis, news breakdowns, and educational insights, published across YouTube, Instagram, and TikTok.">
+  <title>Eyouel Exchange - Crypto Creator Publishing</title>
+  <meta name="description" content="Eyouel Exchange helps authorized crypto creators prepare, review, and publish original market videos to TikTok through a creator-approved posting workflow.">
   <style>
     * { box-sizing: border-box; }
-    body { background:#07091A; color:#FFD700; font-family:Arial,Helvetica,sans-serif; text-align:center; padding:64px 20px; margin:0; }
-    h1 { font-size:44px; letter-spacing:2px; margin:0 0 6px; }
-    .tag { color:#fff; font-size:20px; margin:0 0 24px; }
-    .desc { color:#c9cee0; max-width:640px; margin:0 auto 28px; line-height:1.65; font-size:17px; }
-    .social a { color:#FFD700; text-decoration:none; font-size:17px; }
-    .social a:hover { text-decoration:underline; }
-    .links { margin-top:36px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.08); }
-    .links a { margin:0 14px; color:#8A90AB; font-size:15px; text-decoration:none; }
-    .links a:hover { color:#FFD700; }
-    footer { margin-top:40px; color:#5a6075; font-size:13px; }
+    :root { color-scheme: dark; --gold:#FFD700; --cyan:#2DE2E6; --ink:#07091A; --panel:#11162C; --muted:#AAB1CE; --text:#F7F8FF; }
+    body { margin:0; background:radial-gradient(circle at top left, rgba(45,226,230,.14), transparent 28%), #07091A; color:var(--text); font-family:Arial,Helvetica,sans-serif; }
+    a { color:inherit; }
+    .wrap { width:min(1120px, calc(100% - 40px)); margin:0 auto; }
+    header { border-bottom:1px solid rgba(255,255,255,.1); background:rgba(7,9,26,.88); position:sticky; top:0; backdrop-filter:blur(10px); z-index:2; }
+    nav { min-height:72px; display:flex; align-items:center; justify-content:space-between; gap:22px; }
+    .brand { font-weight:800; letter-spacing:2px; color:var(--gold); text-decoration:none; }
+    .navlinks { display:flex; align-items:center; gap:18px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
+    .navlinks a { text-decoration:none; }
+    .navlinks a:hover { color:var(--gold); }
+    .login-link { color:#07091A !important; background:var(--gold); padding:10px 14px; border-radius:6px; font-weight:700; }
+    main { padding:64px 0 36px; }
+    .hero { display:grid; grid-template-columns:minmax(0, 1.18fr) minmax(320px, .82fr); gap:34px; align-items:center; }
+    .eyebrow { color:var(--cyan); font-weight:700; letter-spacing:1.8px; text-transform:uppercase; font-size:13px; }
+    h1 { margin:12px 0 18px; font-size:clamp(40px, 6vw, 70px); line-height:.98; letter-spacing:0; }
+    .lead { color:#DDE3FF; font-size:19px; line-height:1.65; max-width:760px; margin:0 0 28px; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-bottom:28px; }
+    .button { display:inline-flex; align-items:center; justify-content:center; min-height:48px; padding:0 18px; border-radius:6px; text-decoration:none; font-weight:800; border:1px solid rgba(255,255,255,.18); }
+    .primary { background:var(--gold); color:#07091A; border-color:var(--gold); }
+    .secondary { color:#F7F8FF; background:rgba(255,255,255,.06); }
+    .panel { background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.035)); border:1px solid rgba(255,255,255,.12); border-radius:8px; padding:24px; box-shadow:0 24px 80px rgba(0,0,0,.28); }
+    .metric-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .metric { background:#0B1024; border:1px solid rgba(255,255,255,.09); border-radius:6px; padding:15px; text-align:left; }
+    .metric strong { display:block; color:var(--gold); font-size:24px; margin-bottom:6px; }
+    .metric span { color:var(--muted); font-size:13px; line-height:1.4; }
+    section { padding:34px 0; }
+    h2 { font-size:28px; margin:0 0 16px; letter-spacing:0; }
+    .cards { display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
+    .card { background:var(--panel); border:1px solid rgba(255,255,255,.1); border-radius:8px; padding:20px; min-height:178px; }
+    .card .step { color:var(--cyan); font-weight:800; font-size:13px; text-transform:uppercase; letter-spacing:1.2px; }
+    .card h3 { margin:10px 0; font-size:19px; }
+    .card p, .note, .legal { color:var(--muted); line-height:1.6; font-size:15px; }
+    .note { background:rgba(255,215,0,.08); border:1px solid rgba(255,215,0,.22); border-radius:8px; padding:18px; }
+    footer { border-top:1px solid rgba(255,255,255,.1); padding:24px 0 36px; color:#7D849E; font-size:13px; }
+    footer .footer-links { display:flex; gap:16px; flex-wrap:wrap; margin-top:10px; }
+    footer a { color:#B7BED8; text-decoration:none; }
+    footer a:hover { color:var(--gold); }
+    @media (max-width: 840px) { nav, .hero { grid-template-columns:1fr; } nav { align-items:flex-start; flex-direction:column; padding:16px 0; } .cards, .metric-grid { grid-template-columns:1fr; } main { padding-top:40px; } }
   </style>
 </head>
 <body>
-  <h1>EYOUEL EXCHANGE</h1>
-  <p class="tag">Crypto Secrets Unveiled</p>
-  <p class="desc">EyouelExchange publishes daily cryptocurrency market analysis, breaking-news breakdowns, and educational insights. Our content is shared across YouTube, Instagram, and TikTok to help everyday investors understand what's moving the market.</p>
-  <p class="social"><a href="https://www.instagram.com/eyouelexchange" target="_blank" rel="noopener">@eyouelexchange on Instagram</a></p>
-  <div class="links">
-    <a href="/privacy.html">Privacy Policy</a>
-    <a href="/terms.html">Terms of Service</a>
-  </div>
-  <footer>© 2026 EyouelExchange. All rights reserved.</footer>
+  <header>
+    <nav class="wrap" aria-label="Primary navigation">
+      <a class="brand" href="/">EYOUEL EXCHANGE</a>
+      <div class="navlinks">
+        <a href="/post.html">Posting Workflow</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+        <a class="login-link" href="/login.html">Creator Login</a>
+      </div>
+    </nav>
+  </header>
+  <main class="wrap">
+    <div class="hero">
+      <div>
+        <p class="eyebrow">Crypto market video publishing</p>
+        <h1>Eyouel Exchange</h1>
+        <p class="lead">Eyouel Exchange helps authorized creators prepare original cryptocurrency market videos, review post details, and publish creator-approved content to TikTok using TikTok Login and the Content Posting API.</p>
+        <div class="actions">
+          <a class="button primary" href="/login.html">Continue with TikTok</a>
+          <a class="button secondary" href="/post.html">View posting workflow</a>
+        </div>
+        <p class="legal">For TikTok review: start at <strong>Creator Login</strong>, authorize the app, return to the callback page, then continue to the posting workflow where creator review, privacy selection, commercial disclosure, and final publish consent are shown.</p>
+      </div>
+      <aside class="panel" aria-label="Service overview">
+        <h2>Creator dashboard</h2>
+        <div class="metric-grid">
+          <div class="metric"><strong>1</strong><span>TikTok creator signs in and grants the posting scope.</span></div>
+          <div class="metric"><strong>2</strong><span>The app checks creator posting settings before upload.</span></div>
+          <div class="metric"><strong>3</strong><span>The creator reviews title, privacy, interactions, and disclosures.</span></div>
+          <div class="metric"><strong>4</strong><span>The backend submits only after explicit creator consent.</span></div>
+        </div>
+      </aside>
+    </div>
+
+    <section aria-labelledby="how-it-works">
+      <h2 id="how-it-works">How The TikTok Flow Works</h2>
+      <div class="cards">
+        <article class="card">
+          <span class="step">Step 1</span>
+          <h3>Login entry point</h3>
+          <p>Creators use the visible Creator Login button to start TikTok OAuth from this official website.</p>
+        </article>
+        <article class="card">
+          <span class="step">Step 2</span>
+          <h3>Creator approval</h3>
+          <p>TikTok prompts the creator to authorize Eyouel Exchange for the Content Posting API posting scope.</p>
+        </article>
+        <article class="card">
+          <span class="step">Step 3</span>
+          <h3>Content posting</h3>
+          <p>The creator reviews the video and metadata, confirms TikTok notices, and then submits through the secure backend.</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="review-info">
+      <h2 id="review-info">Reviewer Information</h2>
+      <p class="note">Redirect URI for the web configuration: <strong>https://eyouel-cloud.github.io/auth/tiktok/callback.html</strong>. Requested TikTok scope for direct creator posting: <strong>video.publish</strong>. Client secret and refresh tokens are handled only by the server-side publishing service and are not embedded in this public website.</p>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">
+      <div>&copy; 2026 Eyouel Exchange. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+        <a href="https://www.instagram.com/eyouelexchange" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

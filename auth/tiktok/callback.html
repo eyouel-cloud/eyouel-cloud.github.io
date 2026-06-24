@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTok Authorization Callback - Eyouel Exchange</title>
+  <style>
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; display:grid; place-items:center; background:#07091A; color:#F7F8FF; font-family:Arial,Helvetica,sans-serif; padding:28px; }
+    .card { width:min(720px, 100%); background:#11162C; border:1px solid rgba(255,255,255,.12); border-radius:8px; padding:32px; box-shadow:0 24px 80px rgba(0,0,0,.35); }
+    .brand { color:#FFD700; font-weight:800; letter-spacing:2px; text-transform:uppercase; margin-bottom:24px; }
+    h1 { margin:0 0 12px; font-size:36px; line-height:1; }
+    p { color:#BAC1DD; line-height:1.65; font-size:16px; }
+    .status { margin:18px 0; padding:16px; border-radius:6px; border:1px solid rgba(45,226,230,.22); background:rgba(45,226,230,.08); color:#C9FBFF; }
+    .error { border-color:rgba(255,59,92,.35); background:rgba(255,59,92,.08); color:#FFD6DD; }
+    .button { display:inline-flex; min-height:48px; align-items:center; justify-content:center; padding:0 18px; border-radius:6px; background:#FFD700; color:#07091A; text-decoration:none; font-weight:800; }
+    .links { display:flex; flex-wrap:wrap; gap:14px; margin-top:20px; }
+    .links a { color:#FFD700; text-decoration:none; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="brand">Eyouel Exchange</div>
+    <h1>TikTok Authorization Callback</h1>
+    <p>This redirect page confirms that TikTok can return creators to the configured web URL after authorization. The production publishing service exchanges the short-lived authorization code on the server before calling the Content Posting API.</p>
+    <div id="status" class="status">Checking authorization response...</div>
+    <a class="button" href="/post.html?authorized=1">Continue To Posting Workflow</a>
+    <div class="links">
+      <a href="/">Home</a>
+      <a href="/login.html">Creator Login</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+    </div>
+  </main>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const status = document.getElementById("status");
+    const error = params.get("error");
+    const code = params.get("code");
+    const state = params.get("state");
+    const expectedState = sessionStorage.getItem("tiktok_oauth_state");
+
+    if (error) {
+      status.classList.add("error");
+      status.textContent = "TikTok returned an authorization error: " + error + ". Please return to Creator Login and try again.";
+    } else if (code) {
+      const stateMessage = expectedState && state && expectedState !== state
+        ? " The returned state did not match the browser session and should be rejected by the backend."
+        : " State validation is ready for the backend exchange.";
+      status.textContent = "Authorization code received from TikTok." + stateMessage;
+    } else {
+      status.textContent = "No authorization code is present yet. Start from Creator Login to begin the TikTok OAuth flow.";
+    }
+  </script>
+</body>
+</html>
