@@ -46,7 +46,7 @@
   </header>
   <main class="wrap">
     <h1>Creator Posting Workflow</h1>
-    <p>This page shows the TikTok Content Posting API workflow used after a creator authorizes the app: creator info check, video preview, editable title, required privacy selection, interaction choices, commercial content disclosure, and explicit publish consent.</p>
+    <p>This page shows the TikTok Content Posting API workflow used after a creator authorizes the app: creator info check, video preview, editable title, required privacy selection, interaction choices, commercial content disclosure, and explicit upload consent.</p>
     <div class="grid">
       <section class="panel" aria-label="Video preview">
         <h2>Video Preview</h2>
@@ -61,7 +61,7 @@
 
       <section class="panel" aria-label="Post settings">
         <h2>Post To TikTok</h2>
-        <p id="connection" class="status">TikTok connection ready for review flow. Use Creator Login to authorize the app before publishing.</p>
+        <p id="connection" class="status">TikTok connection ready for review flow. Use Creator Login to authorize the app before uploading.</p>
 
         <label for="creator">Connected creator</label>
         <input id="creator" type="text" value="Loaded from TikTok creator_info API after login" readonly>
@@ -90,11 +90,11 @@
           <label><input type="checkbox"> Allow duet</label>
           <label><input type="checkbox"> Allow stitch</label>
           <label><input id="commercial" type="checkbox"> This post promotes a brand, product, or service</label>
-          <label><input id="consent" type="checkbox"> By posting, I agree to TikTok's Music Usage Confirmation and confirm this content is ready to publish.</label>
+          <label><input id="consent" type="checkbox"> By uploading, I agree to TikTok's Music Usage Confirmation and confirm this content is ready to upload to TikTok drafts.</label>
         </div>
 
-        <button id="publish" class="button" type="button" disabled>Publish Through Content Posting API</button>
-        <p id="publish-status" class="note">The publish button becomes available after selecting privacy and confirming creator consent.</p>
+        <button id="publish" class="button" type="button" disabled>Upload Draft Through Content Posting API</button>
+        <p id="publish-status" class="note">The upload button becomes available after selecting privacy and confirming creator consent.</p>
       </section>
     </div>
   </main>
@@ -107,7 +107,7 @@
     const status = document.getElementById("publish-status");
 
     if (params.get("authorized") === "1") {
-      connection.textContent = "TikTok authorization callback received. The secure backend can now exchange the code, query creator info, and publish after final consent.";
+      connection.textContent = "TikTok authorization callback received. The secure backend can now exchange the code, query creator info, and upload after final consent.";
     }
 
     function updatePublishState() {
@@ -117,7 +117,7 @@
     privacy.addEventListener("change", updatePublishState);
     consent.addEventListener("change", updatePublishState);
     publish.addEventListener("click", function () {
-      status.textContent = "Ready for server-side submission: query creator_info, initialize video publish, upload video, then poll publish/status/fetch for the creator.";
+      status.textContent = "Ready for server-side submission: query creator_info, initialize the Content Posting API upload, send the video to TikTok, and show processing status for the creator.";
     });
   </script>
 </body>

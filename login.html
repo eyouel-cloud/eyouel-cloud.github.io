@@ -21,10 +21,10 @@
   <main class="card">
     <div class="brand">Eyouel Exchange</div>
     <h1>Creator Login</h1>
-    <p>Continue with TikTok to authorize Eyouel Exchange to prepare and publish creator-approved crypto market videos through TikTok's Content Posting API.</p>
-    <a id="tiktok-login" class="button" href="https://www.tiktok.com/v2/auth/authorize/?client_key=awe974xya0k0nkls&response_type=code&scope=video.publish&redirect_uri=https%3A%2F%2Feyouel-cloud.github.io%2Fauth%2Ftiktok%2Fcallback.html&state=review">Continue with TikTok</a>
+    <p>Continue with TikTok to authorize Eyouel Exchange to prepare and upload creator-approved crypto market videos through TikTok's Content Posting API.</p>
+    <a id="tiktok-login" class="button" href="https://www.tiktok.com/v2/auth/authorize/?client_key=awe974xya0k0nkls&response_type=code&scope=user.info.basic%2Cvideo.upload&redirect_uri=https%3A%2F%2Feyouel-cloud.github.io%2Fauth%2Ftiktok%2Fcallback.html&state=review">Continue with TikTok</a>
     <div class="details">
-      <strong>Reviewer path:</strong> This button opens TikTok OAuth using the public client key, requests the <strong>video.publish</strong> scope, and returns to <strong>https://eyouel-cloud.github.io/auth/tiktok/callback.html</strong>. The server-side publishing service handles token exchange and posting API calls; client secrets are not stored on this page.
+      <strong>Reviewer path:</strong> This button opens TikTok OAuth using the public client key, requests the <strong>user.info.basic</strong> and <strong>video.upload</strong> scopes, and returns to <strong>https://eyouel-cloud.github.io/auth/tiktok/callback.html</strong>. The server-side upload service handles token exchange and Content Posting API calls; client secrets are not stored on this page.
     </div>
     <div class="links">
       <a href="/">Home</a>
@@ -36,7 +36,7 @@
   <script>
     const clientKey = "awe974xya0k0nkls";
     const redirectUri = "https://eyouel-cloud.github.io/auth/tiktok/callback.html";
-    const scope = "video.publish";
+    const scope = "user.info.basic,video.upload";
     const login = document.getElementById("tiktok-login");
 
     function randomState() {

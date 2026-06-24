@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eyouel Exchange - Crypto Creator Publishing</title>
-  <meta name="description" content="Eyouel Exchange helps authorized crypto creators prepare, review, and publish original market videos to TikTok through a creator-approved posting workflow.">
+  <meta name="description" content="Eyouel Exchange helps authorized crypto creators prepare, review, and upload original market videos to TikTok drafts through a creator-approved workflow.">
   <style>
     * { box-sizing: border-box; }
     :root { color-scheme: dark; --gold:#FFD700; --cyan:#2DE2E6; --ink:#07091A; --panel:#11162C; --muted:#AAB1CE; --text:#F7F8FF; }
@@ -64,12 +64,12 @@
       <div>
         <p class="eyebrow">Crypto market video publishing</p>
         <h1>Eyouel Exchange</h1>
-        <p class="lead">Eyouel Exchange helps authorized creators prepare original cryptocurrency market videos, review post details, and publish creator-approved content to TikTok using TikTok Login and the Content Posting API.</p>
+        <p class="lead">Eyouel Exchange helps authorized creators prepare original cryptocurrency market videos, review post details, and upload creator-approved content to TikTok drafts using TikTok Login and the Content Posting API.</p>
         <div class="actions">
           <a class="button primary" href="/login.html">Continue with TikTok</a>
           <a class="button secondary" href="/post.html">View posting workflow</a>
         </div>
-        <p class="legal">For TikTok review: start at <strong>Creator Login</strong>, authorize the app, return to the callback page, then continue to the posting workflow where creator review, privacy selection, commercial disclosure, and final publish consent are shown.</p>
+        <p class="legal">For TikTok review: start at <strong>Creator Login</strong>, authorize the app, return to the callback page, then continue to the posting workflow where creator review, privacy selection, commercial disclosure, and final upload consent are shown.</p>
       </div>
       <aside class="panel" aria-label="Service overview">
         <h2>Creator dashboard</h2>
@@ -93,19 +93,19 @@
         <article class="card">
           <span class="step">Step 2</span>
           <h3>Creator approval</h3>
-          <p>TikTok prompts the creator to authorize Eyouel Exchange for the Content Posting API posting scope.</p>
+          <p>TikTok prompts the creator to authorize Eyouel Exchange for the Login Kit and Content Posting API upload scopes.</p>
         </article>
         <article class="card">
           <span class="step">Step 3</span>
           <h3>Content posting</h3>
-          <p>The creator reviews the video and metadata, confirms TikTok notices, and then submits through the secure backend.</p>
+          <p>The creator reviews the video and metadata, confirms TikTok notices, and then uploads the draft through the secure backend.</p>
         </article>
       </div>
     </section>
 
     <section aria-labelledby="review-info">
       <h2 id="review-info">Reviewer Information</h2>
-      <p class="note">Redirect URI for the web configuration: <strong>https://eyouel-cloud.github.io/auth/tiktok/callback.html</strong>. Requested TikTok scope for direct creator posting: <strong>video.publish</strong>. Client secret and refresh tokens are handled only by the server-side publishing service and are not embedded in this public website.</p>
+      <p class="note">Redirect URI for the web configuration: <strong>https://eyouel-cloud.github.io/auth/tiktok/callback.html</strong>. Requested TikTok scopes: <strong>user.info.basic</strong> and <strong>video.upload</strong>. Client secret and refresh tokens are handled only by the server-side upload service and are not embedded in this public website.</p>
     </section>
   </main>
   <footer>
