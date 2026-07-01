@@ -46,7 +46,7 @@
   </header>
   <main class="wrap">
     <h1>Creator Posting Workflow</h1>
-    <p>This page shows the TikTok Content Posting API workflow used after a creator authorizes the app: creator info check, video preview, editable title, required privacy selection, interaction choices, commercial content disclosure, and explicit upload consent.</p>
+    <p>This page shows the TikTok Content Posting API workflow used after a creator authorizes the app: creator info check, video preview, posting mode, editable title, required privacy selection, interaction choices, commercial content disclosure, AI-generated content label, and explicit creator consent.</p>
     <div class="grid">
       <section class="panel" aria-label="Video preview">
         <h2>Video Preview</h2>
@@ -56,15 +56,21 @@
             Original crypto market commentary video prepared for creator review.
           </div>
         </div>
-        <p class="note">Production uploads use creator-approved original videos only. No hidden watermarks or unapproved promotional overlays are added by this publishing workflow.</p>
+        <p class="note">Production submissions use creator-approved original videos only. No hidden watermarks or unapproved promotional overlays are added by this publishing workflow.</p>
       </section>
 
       <section class="panel" aria-label="Post settings">
         <h2>Post To TikTok</h2>
-        <p id="connection" class="status">TikTok connection ready for review flow. Use Creator Login to authorize the app before uploading.</p>
+        <p id="connection" class="status">TikTok connection ready for review flow. Use Creator Login to authorize the app before posting.</p>
 
         <label for="creator">Connected creator</label>
         <input id="creator" type="text" value="Loaded from TikTok creator_info API after login" readonly>
+
+        <label for="mode">Posting mode</label>
+        <select id="mode">
+          <option value="direct">Direct Post (video.publish)</option>
+          <option value="draft">Draft upload (video.upload)</option>
+        </select>
 
         <label for="title">Editable title</label>
         <textarea id="title">Daily crypto market update from Eyouel Exchange. #crypto #bitcoin #marketnews</textarea>
@@ -76,6 +82,7 @@
               <option value="">Select privacy status</option>
               <option>PUBLIC_TO_EVERYONE</option>
               <option>MUTUAL_FOLLOW_FRIENDS</option>
+              <option>FOLLOWER_OF_CREATOR</option>
               <option>SELF_ONLY</option>
             </select>
           </div>
@@ -90,24 +97,26 @@
           <label><input type="checkbox"> Allow duet</label>
           <label><input type="checkbox"> Allow stitch</label>
           <label><input id="commercial" type="checkbox"> This post promotes a brand, product, or service</label>
-          <label><input id="consent" type="checkbox"> By uploading, I agree to TikTok's Music Usage Confirmation and confirm this content is ready to upload to TikTok drafts.</label>
+          <label><input id="aigc" type="checkbox"> This video includes AI-generated content that should be labeled</label>
+          <label><input id="consent" type="checkbox"> I agree to TikTok's Music Usage Confirmation and confirm this content is ready for the selected TikTok posting mode.</label>
         </div>
 
-        <button id="publish" class="button" type="button" disabled>Upload Draft Through Content Posting API</button>
-        <p id="publish-status" class="note">The upload button becomes available after selecting privacy and confirming creator consent.</p>
+        <button id="publish" class="button" type="button" disabled>Submit Through Content Posting API</button>
+        <p id="publish-status" class="note">The submit button becomes available after selecting privacy and confirming creator consent.</p>
       </section>
     </div>
   </main>
   <script>
     const params = new URLSearchParams(window.location.search);
     const connection = document.getElementById("connection");
+    const mode = document.getElementById("mode");
     const privacy = document.getElementById("privacy");
     const consent = document.getElementById("consent");
     const publish = document.getElementById("publish");
     const status = document.getElementById("publish-status");
 
     if (params.get("authorized") === "1") {
-      connection.textContent = "TikTok authorization callback received. The secure backend can now exchange the code, query creator info, and upload after final consent.";
+      connection.textContent = "TikTok authorization callback received. The secure backend can now exchange the code, query creator info, and upload or publish after final consent.";
     }
 
     function updatePublishState() {
@@ -117,7 +126,10 @@
     privacy.addEventListener("change", updatePublishState);
     consent.addEventListener("change", updatePublishState);
     publish.addEventListener("click", function () {
-      status.textContent = "Ready for server-side submission: query creator_info, initialize the Content Posting API upload, send the video to TikTok, and show processing status for the creator.";
+      const action = mode.value === "direct"
+        ? "initialize Direct Post with video.publish"
+        : "initialize draft upload with video.upload";
+      status.textContent = "Ready for server-side submission: query creator_info, " + action + ", send the video to TikTok, and show processing status for the creator.";
     });
   </script>
 </body>
