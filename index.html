@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eyouel Exchange - Crypto Creator Publishing</title>
   <meta name="description" content="Eyouel Exchange helps authorized crypto creators prepare, review, upload, and direct-post original market videos to TikTok through a creator-approved workflow.">
+  <link rel="icon" type="image/png" href="/assets/eyouel-icon.png">
+  <link rel="shortcut icon" href="/assets/eyouel-icon.png">
+  <link rel="apple-touch-icon" href="/assets/eyouel-icon.png">
+  <meta name="theme-color" content="#07091A">
   <style>
     * { box-sizing: border-box; }
     :root { color-scheme: dark; --gold:#FFD700; --cyan:#2DE2E6; --ink:#07091A; --panel:#11162C; --muted:#AAB1CE; --text:#F7F8FF; }
@@ -13,7 +17,8 @@
     .wrap { width:min(1120px, calc(100% - 40px)); margin:0 auto; }
     header { border-bottom:1px solid rgba(255,255,255,.1); background:rgba(7,9,26,.88); position:sticky; top:0; backdrop-filter:blur(10px); z-index:2; }
     nav { min-height:72px; display:flex; align-items:center; justify-content:space-between; gap:22px; }
-    .brand { font-weight:800; letter-spacing:2px; color:var(--gold); text-decoration:none; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:800; letter-spacing:2px; color:var(--gold); text-decoration:none; }
+    .brand img { width:34px; height:34px; border-radius:4px; display:block; }
     .navlinks { display:flex; align-items:center; gap:18px; flex-wrap:wrap; color:var(--muted); font-size:14px; }
     .navlinks a { text-decoration:none; }
     .navlinks a:hover { color:var(--gold); }
@@ -50,7 +55,7 @@
 <body>
   <header>
     <nav class="wrap" aria-label="Primary navigation">
-      <a class="brand" href="/">EYOUEL EXCHANGE</a>
+      <a class="brand" href="/"><img src="/assets/eyouel-icon.png" alt="Eyouel Exchange icon"><span>EYOUEL EXCHANGE</span></a>
       <div class="navlinks">
         <a href="/post.html">Posting Workflow</a>
         <a href="/privacy.html">Privacy Policy</a>

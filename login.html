@@ -4,11 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Creator Login - Eyouel Exchange</title>
+  <link rel="icon" type="image/png" href="/assets/eyouel-icon.png">
+  <link rel="shortcut icon" href="/assets/eyouel-icon.png">
+  <link rel="apple-touch-icon" href="/assets/eyouel-icon.png">
+  <meta name="theme-color" content="#07091A">
   <style>
     * { box-sizing:border-box; }
     body { margin:0; min-height:100vh; display:grid; place-items:center; background:#07091A; color:#F7F8FF; font-family:Arial,Helvetica,sans-serif; padding:28px; }
     .card { width:min(680px, 100%); background:#11162C; border:1px solid rgba(255,255,255,.12); border-radius:8px; padding:32px; box-shadow:0 24px 80px rgba(0,0,0,.35); }
-    .brand { color:#FFD700; font-weight:800; letter-spacing:2px; text-transform:uppercase; margin-bottom:24px; }
+    .brand { display:flex; align-items:center; gap:10px; color:#FFD700; font-weight:800; letter-spacing:2px; text-transform:uppercase; margin-bottom:24px; }
+    .brand img { width:38px; height:38px; border-radius:4px; }
     h1 { margin:0 0 12px; font-size:38px; line-height:1; }
     p { color:#BAC1DD; line-height:1.65; font-size:16px; }
     .button { display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:0 20px; border-radius:6px; background:#FFD700; color:#07091A; text-decoration:none; font-weight:800; margin:14px 0 18px; border:0; cursor:pointer; font-size:16px; }
@@ -19,7 +24,7 @@
 </head>
 <body>
   <main class="card">
-    <div class="brand">Eyouel Exchange</div>
+    <div class="brand"><img src="/assets/eyouel-icon.png" alt="Eyouel Exchange icon"><span>Eyouel Exchange</span></div>
     <h1>Creator Login</h1>
     <p>Continue with TikTok to authorize Eyouel Exchange to prepare, upload, or direct-post creator-approved crypto market videos through TikTok's Content Posting API.</p>
     <a id="tiktok-login" class="button" href="https://www.tiktok.com/v2/auth/authorize/?client_key=awe974xya0k0nkls&response_type=code&scope=user.info.basic%2Cvideo.upload%2Cvideo.publish&redirect_uri=https%3A%2F%2Feyouel-cloud.github.io%2Fauth%2Ftiktok%2Fcallback.html&state=review">Continue with TikTok</a>
