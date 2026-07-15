@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TikTok Authorization Callback - Eyouel Markets</title>
+  <meta name="description" content="TikTok OAuth callback for Eyouel Markets creator authorization.">
+  <link rel="icon" type="image/png" href="/markets/assets/eyouel-markets-icon.png">
+  <link rel="shortcut icon" href="/markets/assets/eyouel-markets-icon.png">
+  <link rel="apple-touch-icon" href="/markets/assets/eyouel-markets-icon.png">
+  <meta name="theme-color" content="#071225">
+  <link rel="stylesheet" href="/markets/assets/site.css">
+</head>
+<body>
+  <main class="login-card">
+    <section class="panel" aria-labelledby="callback-title">
+      <a class="brand" href="/markets/"><img src="/markets/assets/eyouel-markets-icon.png" alt="Eyouel Markets icon"><span>Eyouel Markets</span></a>
+      <p class="eyebrow">Authorization callback</p>
+      <h1 id="callback-title">TikTok Authorization Callback</h1>
+      <p>This page confirms TikTok can return creators to the configured redirect URI after authorization. The production posting service redeems the short-lived code on the server before calling TikTok's Content Posting API.</p>
+      <p id="status" class="note">Checking authorization response...</p>
+      <a class="button primary" href="/markets/post.html?authorized=1">Continue To Posting Workflow</a>
+      <div class="footer-links">
+        <a href="/markets/">Home</a>
+        <a href="/markets/login.html">Creator Login</a>
+        <a href="/markets/privacy.html">Privacy Policy</a>
+        <a href="/markets/terms.html">Terms of Service</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const status = document.getElementById('status');
+    const error = params.get('error');
+    const code = params.get('code');
+    const state = params.get('state');
+    const expectedState = sessionStorage.getItem('eyouel_markets_oauth_state');
+
+    if (error) {
+      status.textContent = 'TikTok returned an authorization error: ' + error + '. Please return to Creator Login and try again.';
+    } else if (code) {
+      const stateMessage = expectedState && state && expectedState !== state
+        ? ' The returned state did not match the browser session and should be rejected by the backend.'
+        : ' State validation is ready for the backend authorization step.';
+      status.textContent = 'Authorization code received from TikTok.' + stateMessage;
+    } else {
+      status.textContent = 'No authorization code is present yet. Start from Creator Login to begin the TikTok OAuth flow.';
+    }
+  </script>
+</body>
+</html>

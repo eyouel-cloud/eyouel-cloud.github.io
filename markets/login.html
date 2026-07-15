@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creator Login - Eyouel Markets</title>
+  <meta name="description" content="Authorize Eyouel Markets to direct-post creator-approved stock market education videos to TikTok.">
+  <link rel="icon" type="image/png" href="/markets/assets/eyouel-markets-icon.png">
+  <link rel="shortcut icon" href="/markets/assets/eyouel-markets-icon.png">
+  <link rel="apple-touch-icon" href="/markets/assets/eyouel-markets-icon.png">
+  <meta name="theme-color" content="#071225">
+  <link rel="stylesheet" href="/markets/assets/site.css">
+</head>
+<body>
+  <main class="login-card">
+    <section class="panel" aria-labelledby="login-title">
+      <a class="brand" href="/markets/"><img src="/markets/assets/eyouel-markets-icon.png" alt="Eyouel Markets icon"><span>Eyouel Markets</span></a>
+      <p class="eyebrow">TikTok creator authorization</p>
+      <h1 id="login-title">Creator Login</h1>
+      <p class="lead">Continue with TikTok to authorize Eyouel Markets for creator-approved Direct Post publishing of stock market education videos.</p>
+      <a id="tiktok-login" class="button primary" href="#" aria-disabled="true">Continue with TikTok</a>
+      <p id="config-status" class="note">Loading TikTok app configuration...</p>
+      <p>Requested scopes: <strong>user.info.basic</strong> and <strong>video.publish</strong>. The client secret is never stored on this page; the server-side posting service handles token redemption, refresh, and publishing requests.</p>
+      <div class="footer-links">
+        <a href="/markets/">Home</a>
+        <a href="/markets/post.html">Posting Workflow</a>
+        <a href="/markets/privacy.html">Privacy Policy</a>
+        <a href="/markets/terms.html">Terms of Service</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="/markets/config.js"></script>
+  <script>
+    const config = window.EYOUEL_MARKETS_CONFIG;
+    const login = document.getElementById('tiktok-login');
+    const status = document.getElementById('config-status');
+
+    function randomState() {
+      const bytes = new Uint8Array(24);
+      window.crypto.getRandomValues(bytes);
+      return Array.from(bytes, function (value) {
+        return value.toString(16).padStart(2, '0');
+      }).join('');
+    }
+
+    function hasClientKey() {
+      return config && config.clientKey && !config.clientKey.includes('REPLACE_WITH');
+    }
+
+    if (!hasClientKey()) {
+      login.classList.add('disabled');
+      status.textContent = 'New TikTok app client key is pending. Add the Eyouel Markets client key to /markets/config.js before submitting this app for review.';
+    } else {
+      login.classList.remove('disabled');
+      login.removeAttribute('aria-disabled');
+      status.textContent = 'TikTok authorization is ready. This button opens TikTok OAuth and returns to the Eyouel Markets callback URL.';
+      login.addEventListener('click', function (event) {
+        event.preventDefault();
+        const state = randomState();
+        sessionStorage.setItem('eyouel_markets_oauth_state', state);
+        const params = new URLSearchParams({
+          client_key: config.clientKey,
+          response_type: 'code',
+          scope: config.scopes,
+          redirect_uri: config.redirectUri,
+          state: state
+        });
+        window.location.href = 'https://www.tiktok.com/v2/auth/authorize/?' + params.toString();
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Direct Post Workflow - Eyouel Markets</title>
+  <meta name="description" content="Eyouel Markets Direct Post workflow for creator-approved stock market education videos.">
+  <link rel="icon" type="image/png" href="/markets/assets/eyouel-markets-icon.png">
+  <link rel="shortcut icon" href="/markets/assets/eyouel-markets-icon.png">
+  <link rel="apple-touch-icon" href="/markets/assets/eyouel-markets-icon.png">
+  <meta name="theme-color" content="#071225">
+  <link rel="stylesheet" href="/markets/assets/site.css">
+</head>
+<body>
+  <header>
+    <nav class="wrap" aria-label="Primary navigation">
+      <a class="brand" href="/markets/"><img src="/markets/assets/eyouel-markets-icon.png" alt="Eyouel Markets icon"><span>Eyouel Markets</span></a>
+      <div class="navlinks">
+        <a href="/markets/login.html">Creator Login</a>
+        <a href="/markets/privacy.html">Privacy Policy</a>
+        <a href="/markets/terms.html">Terms of Service</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <p class="eyebrow">Creator-reviewed Direct Post</p>
+    <h1>Posting Workflow</h1>
+    <p class="lead">This page demonstrates the up-to-date TikTok Content Posting API flow: creator info query, video preview, editable caption, privacy selection, interaction controls, commercial disclosure, AI-generated content label, and explicit consent before Direct Post.</p>
+
+    <div class="form-grid">
+      <section class="panel" aria-label="Stock market video preview">
+        <h2>Video Preview</h2>
+        <div class="preview">
+          <img src="/markets/assets/eyouel-markets-icon.png" alt="Eyouel Markets icon">
+          <div>
+            <div class="preview-title">S&amp;P 500 Morning Brief</div>
+            <p>Stock market education segment prepared for creator review.</p>
+          </div>
+          <div class="mini-chart" aria-hidden="true"></div>
+        </div>
+        <p class="note">Production videos are limited to stock market news and financial education, including equities, ETFs, public company earnings, market indexes, and economic calendar explainers.</p>
+      </section>
+
+      <section class="panel" aria-label="Direct Post settings">
+        <h2>Direct Post Settings</h2>
+        <p id="connection" class="note">Use Creator Login to authorize the app before posting. The backend then calls creator_info/query to display current TikTok posting options.</p>
+
+        <label for="creator">Connected creator</label>
+        <input id="creator" type="text" value="Loaded from TikTok creator_info API after login" readonly>
+
+        <label for="title">Editable caption</label>
+        <textarea id="title">Stock market morning brief: index setup, earnings watch, and risk notes. For education only, not financial advice.</textarea>
+
+        <div class="row">
+          <div>
+            <label for="privacy">Privacy status</label>
+            <select id="privacy">
+              <option value="">Select privacy status</option>
+              <option>PUBLIC_TO_EVERYONE</option>
+              <option>MUTUAL_FOLLOW_FRIENDS</option>
+              <option>FOLLOWER_OF_CREATOR</option>
+              <option>SELF_ONLY</option>
+            </select>
+          </div>
+          <div>
+            <label for="duration">Duration check</label>
+            <input id="duration" type="text" value="Compared with max_video_post_duration_sec" readonly>
+          </div>
+        </div>
+
+        <div class="checks" aria-label="Posting controls">
+          <label><input id="comment" type="checkbox" checked> Allow comments when permitted by creator settings</label>
+          <label><input id="duet" type="checkbox"> Allow duet when permitted by creator settings</label>
+          <label><input id="stitch" type="checkbox"> Allow stitch when permitted by creator settings</label>
+          <label><input id="commercial" type="checkbox"> This post promotes a brand, product, or service</label>
+          <label><input id="aigc" type="checkbox"> This video includes AI-generated content that should be labeled</label>
+          <label><input id="consent" type="checkbox"> I reviewed the video, caption, privacy, interaction settings, and disclosures, and I consent to Direct Post on TikTok.</label>
+        </div>
+
+        <button id="publish" class="primary" type="button" disabled>Direct Post Through Content Posting API</button>
+        <p id="publish-status">The Direct Post button becomes available after selecting privacy and confirming creator consent.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>&copy; 2026 Eyouel Markets. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="/markets/">Home</a>
+        <a href="/markets/privacy.html">Privacy Policy</a>
+        <a href="/markets/terms.html">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const connection = document.getElementById('connection');
+    const privacy = document.getElementById('privacy');
+    const consent = document.getElementById('consent');
+    const publish = document.getElementById('publish');
+    const status = document.getElementById('publish-status');
+
+    if (params.get('authorized') === '1') {
+      connection.textContent = 'TikTok authorization callback received. The secure backend can now redeem the code, query creator info, initialize Direct Post with video.publish, and publish after final creator consent.';
+    }
+
+    function updatePublishState() {
+      publish.disabled = !(privacy.value && consent.checked);
+    }
+
+    privacy.addEventListener('change', updatePublishState);
+    consent.addEventListener('change', updatePublishState);
+    publish.addEventListener('click', function () {
+      status.textContent = 'Ready for server-side Direct Post: query creator_info, initialize /v2/post/publish/video/init/, upload the video with FILE_UPLOAD, and poll publish status for the creator.';
+    });
+  </script>
+</body>
+</html>
