@@ -26,7 +26,7 @@
   <main class="wrap">
     <p class="eyebrow">Creator-reviewed Direct Post</p>
     <h1>Posting Workflow</h1>
-    <p class="lead">This page demonstrates the up-to-date TikTok Content Posting API flow: creator info query, video preview, editable caption, privacy selection, interaction controls, commercial disclosure, AI-generated content label, and explicit consent before Direct Post.</p>
+    <p class="lead">This page demonstrates the TikTok Content Posting API review flow: creator info query, video preview, editable caption, privacy selection, interaction controls, commercial disclosure, AI-generated content label, explicit Direct Post consent, and the draft upload fallback.</p>
 
     <div class="form-grid">
       <section class="panel" aria-label="Stock market video preview">
@@ -82,6 +82,23 @@
         <p id="publish-status">The Direct Post button becomes available after selecting privacy and confirming creator consent.</p>
       </section>
     </div>
+
+    <section aria-labelledby="draft-upload">
+      <h2 id="draft-upload">Draft Upload Fallback</h2>
+      <div class="cards two-cards">
+        <article class="card">
+          <span class="step">video.publish</span>
+          <h3>Direct Post</h3>
+          <p>After TikTok authorization, the creator reviews the stock market education video, selects privacy settings, confirms disclosures, and gives explicit consent before the backend initializes Direct Post and uploads the MP4 with FILE_UPLOAD.</p>
+        </article>
+        <article class="card">
+          <span class="step">video.upload</span>
+          <h3>Creator Draft</h3>
+          <p>If the creator chooses not to Direct Post, the same reviewed MP4 can be sent as a TikTok draft for final editing inside TikTok. This keeps the creator in control before anything appears on their profile.</p>
+        </article>
+      </div>
+      <p class="note">Both paths are limited to stock market news, public company updates, earnings recaps, index commentary, and general financial education. The workflow does not publish cryptocurrency or virtual-currency content.</p>
+    </section>
   </main>
 
   <footer>

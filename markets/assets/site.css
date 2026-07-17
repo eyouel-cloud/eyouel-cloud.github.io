@@ -250,6 +250,10 @@ section {
   gap: 16px;
 }
 
+.two-cards {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .card {
   padding: 20px;
   min-height: 176px;
