@@ -3,8 +3,15 @@ const state = {
   mediaUrl: '',
   scale: 1,
   offsetX: 0,
-  offsetY: 0
+  offsetY: 0,
+  references: []
 };
+
+const DEFAULT_REFERENCES = [
+  'https://www.instagram.com/p/CkgR20xjQS4/'
+];
+
+const REFERENCE_STORAGE_KEY = 'reel-preview-reference-links';
 
 const refs = {
   mediaInput: document.getElementById('media-input'),
@@ -40,7 +47,11 @@ const refs = {
   progressBar: document.getElementById('progress-bar'),
   fitFromOverlay: document.getElementById('fit-from-overlay'),
   statusPill: document.getElementById('status-pill'),
-  canvas: document.getElementById('export-canvas')
+  canvas: document.getElementById('export-canvas'),
+  referenceForm: document.getElementById('reference-form'),
+  referenceUrl: document.getElementById('reference-url'),
+  referenceList: document.getElementById('reference-list'),
+  referenceCount: document.getElementById('reference-count')
 };
 
 function updateText() {
@@ -69,6 +80,113 @@ function updateToggles() {
   refs.safeOverlay.classList.toggle('hidden', !refs.safeToggle.checked);
   refs.gridOverlay.classList.toggle('hidden', !refs.gridToggle.checked);
   refs.reelChrome.classList.toggle('hidden', !refs.chromeToggle.checked);
+}
+
+function normalizeInstagramUrl(value) {
+  const trimmed = value.trim();
+  if (!trimmed) return '';
+  try {
+    const url = new URL(trimmed);
+    if (!url.hostname.includes('instagram.com')) return '';
+    return `https://www.instagram.com${url.pathname.replace(/\/?$/, '/')}`;
+  } catch (error) {
+    return '';
+  }
+}
+
+function referenceLabel(url) {
+  const match = url.match(/\/(?:p|reel|tv)\/([^/]+)\//);
+  return match ? `Reference ${match[1]}` : 'Instagram reference';
+}
+
+function saveReferences() {
+  localStorage.setItem(REFERENCE_STORAGE_KEY, JSON.stringify(state.references));
+}
+
+function loadReferences() {
+  try {
+    const savedValue = localStorage.getItem(REFERENCE_STORAGE_KEY);
+    const saved = savedValue === null ? null : JSON.parse(savedValue);
+    state.references = Array.isArray(saved) ? saved : DEFAULT_REFERENCES;
+  } catch (error) {
+    state.references = DEFAULT_REFERENCES;
+  }
+}
+
+function renderReferences() {
+  refs.referenceList.replaceChildren();
+  refs.referenceCount.textContent = `${state.references.length} saved`;
+
+  state.references.forEach((url, index) => {
+    const item = document.createElement('article');
+    item.className = 'reference-item';
+
+    const text = document.createElement('div');
+    const title = document.createElement('strong');
+    title.textContent = referenceLabel(url);
+    const linkText = document.createElement('p');
+    linkText.textContent = url;
+    text.append(title, linkText);
+
+    const actions = document.createElement('div');
+    actions.className = 'reference-actions';
+
+    const openLink = document.createElement('a');
+    openLink.href = url;
+    openLink.target = '_blank';
+    openLink.rel = 'noopener noreferrer';
+    openLink.textContent = 'Open';
+
+    const copyButton = document.createElement('button');
+    copyButton.type = 'button';
+    copyButton.textContent = 'Copy';
+    copyButton.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(url);
+        refs.statusPill.textContent = 'Link copied';
+      } catch (error) {
+        refs.statusPill.textContent = 'Copy blocked';
+      }
+    });
+
+    const removeButton = document.createElement('button');
+    removeButton.type = 'button';
+    removeButton.textContent = 'Remove';
+    removeButton.addEventListener('click', () => {
+      state.references.splice(index, 1);
+      saveReferences();
+      renderReferences();
+      refs.statusPill.textContent = 'Reference removed';
+    });
+
+    actions.append(openLink, copyButton, removeButton);
+    item.append(text, actions);
+    refs.referenceList.append(item);
+  });
+
+  if (!state.references.length) {
+    const empty = document.createElement('p');
+    empty.className = 'empty-reference';
+    empty.textContent = 'No reference links saved.';
+    refs.referenceList.append(empty);
+  }
+}
+
+function addReference(value) {
+  const normalized = normalizeInstagramUrl(value);
+  if (!normalized) {
+    refs.statusPill.textContent = 'Add an Instagram link';
+    return;
+  }
+
+  if (!state.references.includes(normalized)) {
+    state.references.unshift(normalized);
+    saveReferences();
+    renderReferences();
+  }
+
+  refs.referenceUrl.value = '';
+  refs.statusPill.textContent = 'Reference added';
 }
 
 function clearMedia() {
@@ -281,7 +399,13 @@ refs.buildButton.addEventListener('click', buildPreview);
 refs.fitButton.addEventListener('click', fitLayout);
 refs.fitFromOverlay.addEventListener('click', fitLayout);
 refs.exportButton.addEventListener('click', exportPreview);
+refs.referenceForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  addReference(refs.referenceUrl.value);
+});
 
+loadReferences();
+renderReferences();
 updateText();
 updateTransform();
 updateToggles();

@@ -177,6 +177,7 @@ label {
 }
 
 input[type="text"],
+input[type="url"],
 textarea {
   width: 100%;
   border: 1px solid var(--line);
@@ -524,6 +525,7 @@ output {
 }
 
 .check-list article,
+.reference-card,
 .export-card {
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -547,9 +549,87 @@ output {
 }
 
 .check-list p,
+.reference-card p,
 .export-card p {
   margin-top: 5px;
   font-size: 13px;
+}
+
+.reference-card {
+  display: grid;
+  gap: 14px;
+}
+
+.reference-header,
+.reference-input-row,
+.reference-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reference-header {
+  justify-content: space-between;
+}
+
+.reference-header span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.reference-form {
+  display: grid;
+  gap: 8px;
+}
+
+.reference-input-row input {
+  min-width: 0;
+}
+
+.reference-input-row button {
+  flex: 0 0 auto;
+}
+
+.reference-list {
+  display: grid;
+  gap: 10px;
+}
+
+.reference-item {
+  display: grid;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, .10);
+  border-radius: 7px;
+  background: rgba(5, 12, 22, .42);
+  padding: 12px;
+}
+
+.reference-item p {
+  overflow-wrap: anywhere;
+}
+
+.reference-actions {
+  flex-wrap: wrap;
+}
+
+.reference-actions a,
+.reference-actions button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: var(--text);
+  background: rgba(255, 255, 255, .06);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 0 10px;
+  text-decoration: none;
+}
+
+.empty-reference {
+  color: var(--muted);
 }
 
 @media (max-width: 1120px) {
