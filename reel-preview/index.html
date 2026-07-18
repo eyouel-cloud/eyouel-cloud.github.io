@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reel Instant Preview</title>
+  <meta name="description" content="Preview vertical video inside a Reel-style safe-area layout before posting.">
+  <link rel="stylesheet" href="./assets/app.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="control-panel" aria-label="Preview controls">
+      <div class="brand-row">
+        <div class="mark">RP</div>
+        <div>
+          <h1>Reel Instant Preview</h1>
+          <p>Build a quick posting preview before your video goes live.</p>
+        </div>
+      </div>
+
+      <label class="drop-zone" for="media-input" id="drop-zone">
+        <input id="media-input" type="file" accept="image/*,video/*">
+        <span class="drop-kicker">Add vertical media</span>
+        <strong>Drop a reel, image, or cover here</strong>
+        <small>9:16 works best. Files stay in this browser.</small>
+      </label>
+
+      <div class="field-group">
+        <label for="username">Username</label>
+        <input id="username" type="text" value="yourbrand">
+      </div>
+
+      <div class="field-group">
+        <label for="caption">Caption preview</label>
+        <textarea id="caption" rows="3">New drop is ready. Check the layout, caption, and action rail before posting.</textarea>
+      </div>
+
+      <div class="grid-two">
+        <div class="field-group">
+          <label for="likes">Likes</label>
+          <input id="likes" type="text" value="12.4K">
+        </div>
+        <div class="field-group">
+          <label for="comments">Comments</label>
+          <input id="comments" type="text" value="218">
+        </div>
+      </div>
+
+      <div class="slider-row">
+        <label for="scale">Scale</label>
+        <input id="scale" type="range" min="0.65" max="1.75" value="1" step="0.01">
+        <output id="scale-output" for="scale">100%</output>
+      </div>
+
+      <div class="slider-row">
+        <label for="offset-x">Horizontal</label>
+        <input id="offset-x" type="range" min="-240" max="240" value="0" step="1">
+        <output id="offset-x-output" for="offset-x">0</output>
+      </div>
+
+      <div class="slider-row">
+        <label for="offset-y">Vertical</label>
+        <input id="offset-y" type="range" min="-360" max="360" value="0" step="1">
+        <output id="offset-y-output" for="offset-y">0</output>
+      </div>
+
+      <div class="toggle-grid">
+        <label><input id="safe-toggle" type="checkbox" checked> Safe zones</label>
+        <label><input id="grid-toggle" type="checkbox" checked> Grid</label>
+        <label><input id="chrome-toggle" type="checkbox" checked> Reel UI</label>
+      </div>
+
+      <div class="button-row">
+        <button id="build-button" class="primary-button" type="button">Build Preview</button>
+        <button id="fit-button" type="button">Fit Layout</button>
+        <button id="export-button" type="button">Export PNG</button>
+      </div>
+    </section>
+
+    <section class="preview-column" aria-label="Reel preview">
+      <div class="stage-toolbar">
+        <div>
+          <p class="eyebrow">Instant layout check</p>
+          <h2>Reel Preview</h2>
+        </div>
+        <div class="status-pill" id="status-pill">Ready</div>
+      </div>
+
+      <div class="phone-frame" id="phone-frame">
+        <div class="reel-screen">
+          <div class="grid-overlay" id="grid-overlay" aria-hidden="true"></div>
+          <div class="media-layer" id="media-layer">
+            <div class="sample-art" id="sample-art">
+              <div class="sample-light"></div>
+              <div class="sample-card">
+                <span>Upload media</span>
+                <strong>Preview your Reel layout</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="safe-overlay" id="safe-overlay" aria-hidden="true">
+            <div class="safe-label top-label">Top text / buttons</div>
+            <div class="safe-label right-label">Action rail</div>
+            <div class="safe-label bottom-label">Caption + controls</div>
+          </div>
+
+          <div class="reel-chrome" id="reel-chrome">
+            <div class="top-tabs">
+              <span>Following</span>
+              <strong>For You</strong>
+            </div>
+            <div class="action-rail">
+              <div class="circle-button">H</div>
+              <span id="likes-preview">12.4K</span>
+              <div class="circle-button">C</div>
+              <span id="comments-preview">218</span>
+              <div class="circle-button">S</div>
+              <div class="circle-button">M</div>
+            </div>
+            <div class="caption-block">
+              <div class="profile-row">
+                <div class="avatar" id="avatar-preview">Y</div>
+                <strong id="username-preview">@yourbrand</strong>
+                <button type="button">Follow</button>
+              </div>
+              <p id="caption-preview">New drop is ready. Check the layout, caption, and action rail before posting.</p>
+              <small>Original audio</small>
+            </div>
+          </div>
+
+          <div class="build-overlay" id="build-overlay" hidden>
+            <div class="build-card">
+              <p>Reel Instant Preview</p>
+              <strong id="progress-value">0%</strong>
+              <span>Downloading assets for preview</span>
+              <div class="progress-bar"><i id="progress-bar"></i></div>
+              <button id="fit-from-overlay" type="button">Fit trailer to this layout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="inspector" aria-label="Checklist">
+      <h2>Posting Checklist</h2>
+      <div class="check-list">
+        <article>
+          <span class="ok-dot"></span>
+          <div>
+            <strong>Title safe area</strong>
+            <p>Keep important text below the top tabs and away from app buttons.</p>
+          </div>
+        </article>
+        <article>
+          <span class="ok-dot"></span>
+          <div>
+            <strong>Action rail clearance</strong>
+            <p>Faces, product labels, and charts should not sit under the right controls.</p>
+          </div>
+        </article>
+        <article>
+          <span class="ok-dot"></span>
+          <div>
+            <strong>Caption clearance</strong>
+            <p>Keep calls-to-action above the caption block or place them in the caption itself.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="export-card">
+        <p class="eyebrow">Output</p>
+        <h3>Exported preview</h3>
+        <p>Exports a 1080 x 1920 PNG with your media, crop, and UI overlay.</p>
+      </div>
+    </aside>
+  </main>
+
+  <canvas id="export-canvas" width="1080" height="1920" hidden></canvas>
+  <script src="./assets/app.js"></script>
+</body>
+</html>
