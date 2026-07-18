@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reel Mimic Builder</title>
+  <meta name="description" content="Create a new reel from your photos and videos using the timing and edit feel of a reference reel.">
+  <link rel="stylesheet" href="./assets/mimic.css">
+</head>
+<body>
+  <main class="mimic-shell">
+    <section class="panel control-panel" aria-label="Mimic controls">
+      <a class="back-link" href="./index.html">Back to preview</a>
+      <div class="brand-row">
+        <div class="mark">RM</div>
+        <div>
+          <h1>Reel Mimic Builder</h1>
+          <p>Reference reel in, your media out.</p>
+        </div>
+      </div>
+
+      <section class="control-section" aria-labelledby="reference-heading">
+        <div class="section-heading">
+          <span>1</span>
+          <h2 id="reference-heading">Reference Reel</h2>
+        </div>
+
+        <form id="reference-form" class="reference-form">
+          <label for="reference-url">Instagram link</label>
+          <div class="inline-row">
+            <input id="reference-url" type="url" inputmode="url" placeholder="https://www.instagram.com/p/...">
+            <button type="submit">Save</button>
+          </div>
+        </form>
+
+        <label class="file-card" for="reference-video">
+          <input id="reference-video" type="file" accept="video/*">
+          <span>Optional timing source</span>
+          <strong>Upload reference screen recording</strong>
+          <small id="reference-file-name">No reference video selected</small>
+        </label>
+
+        <button id="analyze-button" type="button">Analyze Timing</button>
+      </section>
+
+      <section class="control-section" aria-labelledby="media-heading">
+        <div class="section-heading">
+          <span>2</span>
+          <h2 id="media-heading">Your Media</h2>
+        </div>
+
+        <label class="file-card" for="media-input">
+          <input id="media-input" type="file" accept="image/*,video/*" multiple>
+          <span>Photo/video stack</span>
+          <strong>Upload media to rebuild the reel</strong>
+          <small id="media-count">No media selected</small>
+        </label>
+
+        <div id="media-strip" class="media-strip"></div>
+      </section>
+
+      <section class="control-section" aria-labelledby="style-heading">
+        <div class="section-heading">
+          <span>3</span>
+          <h2 id="style-heading">Edit Style</h2>
+        </div>
+
+        <div class="field-group">
+          <label for="template-select">Fallback template</label>
+          <select id="template-select">
+            <option value="fast">Fast hook cuts</option>
+            <option value="smooth">Smooth photo carousel</option>
+            <option value="cinematic">Cinematic zooms</option>
+            <option value="flash">Flash transition trend</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label for="hook-text">Hook text</label>
+          <input id="hook-text" type="text" value="This layout is ready">
+        </div>
+
+        <div class="field-group">
+          <label for="caption-text">Caption text</label>
+          <textarea id="caption-text" rows="3">New version using my own media.</textarea>
+        </div>
+
+        <div class="grid-two">
+          <div class="field-group">
+            <label for="duration-input">Duration</label>
+            <input id="duration-input" type="number" min="4" max="45" step="1" value="12">
+          </div>
+          <div class="field-group">
+            <label for="intensity-input">Intensity</label>
+            <input id="intensity-input" type="range" min="0" max="100" value="70">
+          </div>
+        </div>
+
+        <div class="button-row">
+          <button id="generate-button" class="primary-button" type="button">Generate Mimic Reel</button>
+          <button id="play-button" type="button">Play</button>
+          <button id="export-button" type="button">Export WebM</button>
+        </div>
+      </section>
+    </section>
+
+    <section class="preview-column" aria-label="Generated reel preview">
+      <div class="stage-toolbar">
+        <div>
+          <p class="eyebrow">Media edit preview</p>
+          <h2>Generated Reel</h2>
+        </div>
+        <div class="status-pill" id="status-pill">Ready</div>
+      </div>
+
+      <div class="phone-frame">
+        <canvas id="preview-canvas" width="1080" height="1920" aria-label="Generated reel canvas"></canvas>
+      </div>
+    </section>
+
+    <aside class="panel inspector" aria-label="Edit map and references">
+      <section>
+        <div class="reference-header">
+          <div>
+            <p class="eyebrow">Mimic board</p>
+            <h2>References</h2>
+          </div>
+          <span id="reference-count">0 saved</span>
+        </div>
+        <div id="reference-list" class="reference-list"></div>
+      </section>
+
+      <section>
+        <div class="reference-header">
+          <div>
+            <p class="eyebrow">Cut map</p>
+            <h2>Edit Timeline</h2>
+          </div>
+          <span id="timeline-count">0 cuts</span>
+        </div>
+        <div id="timeline-list" class="timeline-list"></div>
+      </section>
+    </aside>
+  </main>
+
+  <script src="./assets/mimic.js"></script>
+</body>
+</html>

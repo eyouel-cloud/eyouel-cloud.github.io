@@ -228,6 +228,19 @@ output {
   margin-top: 18px;
 }
 
+.tool-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, .07);
+  color: var(--text);
+  font-weight: 800;
+  padding: 0 14px;
+  text-decoration: none;
+}
+
 .preview-column {
   min-width: 0;
   display: grid;
