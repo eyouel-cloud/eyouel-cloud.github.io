@@ -230,6 +230,57 @@ button:disabled,
   font-size: 13px;
 }
 
+.workspace-grid,
+.review-demo-shell,
+.demo-product-grid,
+.creator-info-grid,
+.composer-grid,
+.upload-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.workspace-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.workspace-panel,
+.demo-product-card,
+.creator-card,
+.upload-card,
+.draft-panel,
+.callback-panel,
+.auth-card {
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 8px;
+  background: rgba(7, 18, 37, .62);
+  padding: 18px;
+}
+
+.workspace-panel {
+  display: grid;
+  gap: 12px;
+}
+
+.workspace-head,
+.demo-topline,
+.demo-actions,
+.auth-card,
+.callback-panel,
+.draft-panel,
+.creator-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.workspace-head,
+.demo-topline,
+.demo-actions,
+.draft-panel {
+  justify-content: space-between;
+}
+
 .up {
   color: var(--green);
   font-weight: 800;
@@ -238,6 +289,257 @@ button:disabled,
 .flat {
   color: var(--gold);
   font-weight: 800;
+}
+
+.review-demo-shell {
+  grid-template-columns: 260px minmax(0, 1fr);
+  align-items: start;
+  padding-top: 12px;
+}
+
+.demo-steps {
+  position: sticky;
+  top: 96px;
+  display: grid;
+  gap: 10px;
+}
+
+.demo-step {
+  min-height: auto;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 13px;
+  background: rgba(255, 255, 255, .055);
+  color: var(--text);
+}
+
+.demo-step span {
+  color: var(--cyan);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.demo-step strong {
+  text-align: left;
+}
+
+.demo-step.active {
+  border-color: rgba(242, 201, 76, .68);
+  background: rgba(242, 201, 76, .12);
+}
+
+.demo-stage {
+  min-height: 620px;
+  display: grid;
+  gap: 18px;
+}
+
+.demo-browser-bar {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 8px;
+  background: rgba(4, 10, 20, .82);
+  padding: 0 12px;
+}
+
+.demo-browser-bar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--red);
+}
+
+.demo-browser-bar span:nth-child(2) {
+  background: var(--gold);
+}
+
+.demo-browser-bar span:nth-child(3) {
+  background: var(--green);
+}
+
+.demo-browser-bar strong {
+  min-width: 0;
+  color: #dce7f8;
+  font-size: 13px;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status-chip {
+  border: 1px solid rgba(39, 217, 136, .4);
+  border-radius: 999px;
+  background: rgba(39, 217, 136, .11);
+  color: #c8ffe6;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+
+.demo-content {
+  min-height: 390px;
+  display: grid;
+  gap: 16px;
+}
+
+.demo-product-grid {
+  grid-template-columns: minmax(0, 1.3fr) minmax(260px, .7fr);
+}
+
+.demo-product-card.wide {
+  display: grid;
+  gap: 12px;
+}
+
+.auth-card img {
+  width: 74px;
+  height: 74px;
+  border-radius: 12px;
+}
+
+.scope-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.scope-grid span {
+  border: 1px solid rgba(34, 199, 242, .32);
+  border-radius: 999px;
+  color: #dff8ff;
+  background: rgba(34, 199, 242, .08);
+  font-weight: 800;
+  padding: 10px 12px;
+}
+
+.code-block {
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, .34);
+  color: #dce7f8;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+  padding: 14px;
+}
+
+.success-mark,
+.avatar-large {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: rgba(39, 217, 136, .18);
+  color: #c8ffe6;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.avatar-large {
+  background: linear-gradient(135deg, var(--cyan), var(--gold));
+  color: #071225;
+  font-size: 22px;
+}
+
+.settings-matrix {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 0;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.settings-matrix span,
+.settings-matrix strong {
+  padding: 13px;
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.settings-matrix span {
+  color: var(--muted);
+  background: rgba(255, 255, 255, .04);
+}
+
+.settings-matrix strong {
+  color: var(--text);
+}
+
+.composer-grid {
+  grid-template-columns: 250px minmax(0, 1fr);
+}
+
+.demo-video-preview {
+  aspect-ratio: 9 / 16;
+  border: 1px solid rgba(255, 255, 255, .13);
+  border-radius: 9px;
+  background:
+    linear-gradient(rgba(255, 255, 255, .045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .045) 1px, transparent 1px),
+    linear-gradient(180deg, #14264a, #071225);
+  background-size: 30px 30px, 30px 30px, auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px;
+}
+
+.demo-video-preview img {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+}
+
+.demo-video-preview strong {
+  color: var(--white);
+  font-size: 26px;
+  line-height: 1.05;
+}
+
+.demo-video-preview span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.composer-controls textarea {
+  min-height: 90px;
+}
+
+.upload-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.progress-shell {
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .09);
+  overflow: hidden;
+}
+
+.progress-shell span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--cyan), var(--green));
+  animation: uploadPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes uploadPulse {
+  0%, 100% {
+    opacity: .72;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 section {
@@ -416,7 +718,13 @@ footer {
   nav,
   .hero,
   .form-grid,
-  .row {
+  .row,
+  .workspace-grid,
+  .review-demo-shell,
+  .demo-product-grid,
+  .creator-info-grid,
+  .composer-grid,
+  .upload-grid {
     grid-template-columns: 1fr;
   }
 
@@ -428,6 +736,21 @@ footer {
 
   .cards {
     grid-template-columns: 1fr;
+  }
+
+  .demo-steps {
+    position: static;
+  }
+
+  .settings-matrix {
+    grid-template-columns: 1fr;
+  }
+
+  .draft-panel,
+  .demo-topline,
+  .demo-actions {
+    align-items: stretch;
+    flex-direction: column;
   }
 
   main {

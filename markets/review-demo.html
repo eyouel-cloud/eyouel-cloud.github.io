@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reviewer Demo - Eyouel Markets</title>
+  <meta name="description" content="Interactive TikTok Login Kit and Content Posting API mockup demo for Eyouel Markets app review.">
+  <link rel="icon" type="image/png" href="/markets/assets/eyouel-markets-icon.png">
+  <link rel="shortcut icon" href="/markets/assets/eyouel-markets-icon.png">
+  <link rel="apple-touch-icon" href="/markets/assets/eyouel-markets-icon.png">
+  <meta name="theme-color" content="#071225">
+  <link rel="stylesheet" href="/markets/assets/site.css">
+</head>
+<body>
+  <header>
+    <nav class="wrap" aria-label="Primary navigation">
+      <a class="brand" href="/markets/"><img src="/markets/assets/eyouel-markets-icon.png" alt="Eyouel Markets icon"><span>Eyouel Markets</span></a>
+      <div class="navlinks">
+        <a href="/markets/">Home</a>
+        <a href="/markets/post.html">Posting Workflow</a>
+        <a href="/markets/privacy.html">Privacy Policy</a>
+        <a href="/markets/terms.html">Terms of Service</a>
+        <a class="login-link" href="/markets/login.html">Creator Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <p class="eyebrow">TikTok app review mockup</p>
+    <h1>End-To-End Review Demo</h1>
+    <p class="lead">This interactive mockup demonstrates the complete TikTok flow inside Eyouel Markets: Login Kit, redirect callback, creator info query, Direct Post review, FILE_UPLOAD transfer, status polling, and video.upload draft fallback.</p>
+    <p class="note">This reviewer demo uses stock-market education content only: equities, ETFs, market indexes, public company updates, earnings recaps, and economic calendar explainers.</p>
+
+    <section class="review-demo-shell" aria-label="Interactive reviewer demo">
+      <aside class="demo-steps" aria-label="Demo steps">
+        <button class="demo-step active" type="button" data-step="0">
+          <span>01</span>
+          <strong>Official website</strong>
+        </button>
+        <button class="demo-step" type="button" data-step="1">
+          <span>02</span>
+          <strong>Login Kit</strong>
+        </button>
+        <button class="demo-step" type="button" data-step="2">
+          <span>03</span>
+          <strong>Redirect callback</strong>
+        </button>
+        <button class="demo-step" type="button" data-step="3">
+          <span>04</span>
+          <strong>Creator info</strong>
+        </button>
+        <button class="demo-step" type="button" data-step="4">
+          <span>05</span>
+          <strong>Direct Post review</strong>
+        </button>
+        <button class="demo-step" type="button" data-step="5">
+          <span>06</span>
+          <strong>Upload and status</strong>
+        </button>
+        <button class="demo-step" type="button" data-step="6">
+          <span>07</span>
+          <strong>Draft fallback</strong>
+        </button>
+      </aside>
+
+      <section class="demo-stage panel" aria-live="polite">
+        <div class="demo-browser-bar">
+          <span></span>
+          <span></span>
+          <span></span>
+          <strong id="demo-url">https://eyouel-cloud.github.io/markets/</strong>
+        </div>
+
+        <div class="demo-topline">
+          <div>
+            <p class="eyebrow" id="demo-kicker">Official website</p>
+            <h2 id="demo-title">Eyouel Markets Website</h2>
+          </div>
+          <span id="demo-status" class="status-chip">Review ready</span>
+        </div>
+
+        <div id="demo-content" class="demo-content"></div>
+
+        <div class="demo-actions">
+          <button id="prev-step" class="secondary" type="button">Previous</button>
+          <button id="next-step" class="primary" type="button">Next Step</button>
+        </div>
+      </section>
+    </section>
+
+    <section aria-labelledby="review-script-title">
+      <h2 id="review-script-title">What The Demo Video Should Show</h2>
+      <div class="cards two-cards">
+        <article class="card">
+          <span class="step">Required products</span>
+          <h3>Login Kit and Content Posting API</h3>
+          <p>Show the creator opening the official website, authorizing with TikTok, returning to the redirect URI, and entering the posting workspace.</p>
+        </article>
+        <article class="card">
+          <span class="step">Required scopes</span>
+          <h3>user.info.basic, video.publish, video.upload</h3>
+          <p>Show creator info, Direct Post controls, explicit consent, upload progress, status polling, and the draft upload fallback.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>&copy; 2026 Eyouel Markets. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="/markets/">Home</a>
+        <a href="/markets/login.html">Creator Login</a>
+        <a href="/markets/post.html">Posting Workflow</a>
+        <a href="/markets/privacy.html">Privacy Policy</a>
+        <a href="/markets/terms.html">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/markets/review-demo.js"></script>
+</body>
+</html>
