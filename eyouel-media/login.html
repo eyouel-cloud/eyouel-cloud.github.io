@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Creator Login - Eyouel Media</title>
+  <meta name="description" content="Authorize Eyouel Media to publish creator-approved original faith-based videos to TikTok.">
+  <link rel="icon" type="image/svg+xml" href="/eyouel-media/assets/eyouel-media-icon.svg">
+  <link rel="stylesheet" href="/eyouel-media/assets/site.css">
+</head>
+<body>
+  <main class="login-card">
+    <section class="panel" aria-labelledby="login-title">
+      <a class="brand" href="/eyouel-media/"><img src="/eyouel-media/assets/eyouel-media-icon.svg" alt="Eyouel Media icon"><span>Eyouel Media</span></a>
+      <p class="eyebrow">TikTok creator authorization</p>
+      <h1 id="login-title">Creator Login</h1>
+      <p class="lead">Continue with TikTok to authorize Eyouel Media for creator-approved Direct Post publishing and draft upload of your own original faith-based motivational videos.</p>
+      <a id="tiktok-login" class="button primary" href="#" aria-disabled="true">Continue with TikTok</a>
+      <p id="config-status" class="note">Loading TikTok app configuration...</p>
+      <p>Requested scopes: <strong>user.info.basic</strong>, <strong>video.publish</strong>, and <strong>video.upload</strong>. The client secret is never stored on this page.</p>
+      <div class="footer-links">
+        <a href="/eyouel-media/">Home</a>
+        <a href="/eyouel-media/review-demo.html">Reviewer Demo</a>
+        <a href="/eyouel-media/post.html">Posting Workflow</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="/eyouel-media/config.js"></script>
+  <script>
+    const config = window.EYOUEL_MEDIA_CONFIG;
+    const login = document.getElementById('tiktok-login');
+    const status = document.getElementById('config-status');
+
+    function randomState() {
+      const bytes = new Uint8Array(24);
+      window.crypto.getRandomValues(bytes);
+      return Array.from(bytes, function (value) {
+        return value.toString(16).padStart(2, '0');
+      }).join('');
+    }
+
+    function hasClientKey() {
+      return config && config.clientKey && !config.clientKey.includes('REPLACE_WITH');
+    }
+
+    if (!hasClientKey()) {
+      login.classList.add('disabled');
+      status.textContent = 'TikTok OAuth is configuration-ready. Add the Eyouel Media client key to /eyouel-media/config.js before final app review.';
+    } else {
+      login.classList.remove('disabled');
+      login.removeAttribute('aria-disabled');
+      status.textContent = 'TikTok authorization is ready. This button opens TikTok OAuth and returns to the Eyouel Media callback URL.';
+      login.addEventListener('click', function (event) {
+        event.preventDefault();
+        const state = randomState();
+        sessionStorage.setItem('eyouel_media_oauth_state', state);
+        const params = new URLSearchParams({
+          client_key: config.clientKey,
+          response_type: 'code',
+          scope: config.scopes,
+          redirect_uri: config.redirectUri,
+          state: state
+        });
+        window.location.href = 'https://www.tiktok.com/v2/auth/authorize/?' + params.toString();
+      });
+    }
+  </script>
+</body>
+</html>

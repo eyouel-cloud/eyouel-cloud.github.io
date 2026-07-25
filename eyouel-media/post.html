@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Posting Workflow - Eyouel Media</title>
+  <meta name="description" content="Eyouel Media Content Posting API workflow for creator-approved faith-based motivational videos.">
+  <link rel="icon" type="image/svg+xml" href="/eyouel-media/assets/eyouel-media-icon.svg">
+  <link rel="stylesheet" href="/eyouel-media/assets/site.css">
+</head>
+<body>
+  <header>
+    <nav class="wrap" aria-label="Primary navigation">
+      <a class="brand" href="/eyouel-media/"><img src="/eyouel-media/assets/eyouel-media-icon.svg" alt="Eyouel Media icon"><span>Eyouel Media</span></a>
+      <div class="navlinks">
+        <a href="/eyouel-media/review-demo.html">Reviewer Demo</a>
+        <a href="/eyouel-media/login.html">Creator Login</a>
+        <a href="/eyouel-media/#privacy">Privacy</a>
+        <a href="/eyouel-media/#terms">Terms</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <p class="eyebrow">Creator-reviewed Direct Post</p>
+    <h1>Posting Workflow</h1>
+    <p class="lead">This page demonstrates the TikTok Content Posting API flow for original faith-based motivational videos: creator info, video preview, editable caption, privacy selection, interaction controls, disclosures, explicit Direct Post consent, upload status, and draft fallback.</p>
+
+    <div class="form-grid">
+      <section class="panel" aria-label="Video preview">
+        <h2>Video Preview</h2>
+        <div class="preview">
+          <img src="/eyouel-media/assets/eyouel-media-icon.svg" alt="Eyouel Media icon">
+          <div>
+            <div class="preview-title">Morning Encouragement</div>
+            <p>Original faith-based motivational video prepared for creator review.</p>
+          </div>
+          <div class="sun-line" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <section class="panel" aria-label="Direct Post settings">
+        <h2>Direct Post Settings</h2>
+        <p id="connection" class="note">Use Creator Login to authorize the app before posting. The backend then calls creator_info/query to display current TikTok posting options.</p>
+
+        <label for="creator">Connected creator</label>
+        <input id="creator" type="text" value="Loaded from TikTok creator_info API after login" readonly>
+
+        <label for="title">Editable caption</label>
+        <textarea id="title">A short reminder to start the day with faith, gratitude, and courage. Original creator-owned video.</textarea>
+
+        <div class="row">
+          <div>
+            <label for="privacy">Privacy status</label>
+            <select id="privacy">
+              <option value="">Select privacy status</option>
+              <option>PUBLIC_TO_EVERYONE</option>
+              <option>MUTUAL_FOLLOW_FRIENDS</option>
+              <option>FOLLOWER_OF_CREATOR</option>
+              <option>SELF_ONLY</option>
+            </select>
+          </div>
+          <div>
+            <label for="duration">Duration check</label>
+            <input id="duration" type="text" value="Compared with max_video_post_duration_sec" readonly>
+          </div>
+        </div>
+
+        <div class="checks" aria-label="Posting controls">
+          <label><input id="comment" type="checkbox" checked> Allow comments when permitted by creator settings</label>
+          <label><input id="duet" type="checkbox"> Allow duet when permitted by creator settings</label>
+          <label><input id="stitch" type="checkbox"> Allow stitch when permitted by creator settings</label>
+          <label><input id="commercial" type="checkbox"> This post promotes a brand, product, or service</label>
+          <label><input id="aigc" type="checkbox"> This video includes AI-generated content that should be labeled</label>
+          <label><input id="consent" type="checkbox"> I reviewed the video, caption, privacy, interaction settings, disclosures, and I consent to Direct Post on TikTok.</label>
+        </div>
+
+        <button id="publish" class="primary" type="button" disabled>Direct Post Through Content Posting API</button>
+        <p id="publish-status">The Direct Post button becomes available after selecting privacy and confirming creator consent.</p>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const connection = document.getElementById('connection');
+    const privacy = document.getElementById('privacy');
+    const consent = document.getElementById('consent');
+    const publish = document.getElementById('publish');
+    const status = document.getElementById('publish-status');
+
+    if (params.get('authorized') === '1') {
+      connection.textContent = 'TikTok authorization callback received. The secure backend can now redeem the code, query creator info, initialize Direct Post with video.publish, and publish after final creator consent.';
+    }
+
+    function updatePublishState() {
+      publish.disabled = !(privacy.value && consent.checked);
+    }
+
+    privacy.addEventListener('change', updatePublishState);
+    consent.addEventListener('change', updatePublishState);
+    publish.addEventListener('click', function () {
+      status.textContent = 'Ready for server-side Direct Post: query creator_info, initialize /v2/post/publish/video/init/, upload the MP4 with FILE_UPLOAD, and poll publish status for the creator.';
+    });
+  </script>
+</body>
+</html>

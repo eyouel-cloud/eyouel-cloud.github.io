@@ -1,0 +1,12 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1024" height="1024" rx="88" fill="#07111F"/>
+  <path d="M238 471C251 333 366 225 506 225C646 225 761 333 774 471" stroke="#F2C94C" stroke-width="38" stroke-linecap="round"/>
+  <path d="M160 528H864" stroke="#F2C94C" stroke-width="34" stroke-linecap="round"/>
+  <path d="M506 112V180" stroke="#F2C94C" stroke-width="34" stroke-linecap="round"/>
+  <path d="M319 164L353 223" stroke="#F2C94C" stroke-width="28" stroke-linecap="round"/>
+  <path d="M693 164L659 223" stroke="#F2C94C" stroke-width="28" stroke-linecap="round"/>
+  <path d="M204 306L263 340" stroke="#F2C94C" stroke-width="28" stroke-linecap="round"/>
+  <path d="M808 306L749 340" stroke="#F2C94C" stroke-width="28" stroke-linecap="round"/>
+  <text x="512" y="662" text-anchor="middle" fill="#F4F8FF" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="800" letter-spacing="6">EYOUEL MEDIA</text>
+  <text x="512" y="730" text-anchor="middle" fill="#AEBBD0" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" letter-spacing="7">CREATOR REVIEWED</text>
+</svg>

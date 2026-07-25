@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eyouel Media - Faith-Based Creator Publishing</title>
+  <meta name="description" content="Eyouel Media helps creators review and publish their own original faith-based motivational videos to TikTok.">
+  <link rel="icon" type="image/svg+xml" href="/eyouel-media/assets/eyouel-media-icon.svg">
+  <link rel="stylesheet" href="/eyouel-media/assets/site.css">
+</head>
+<body>
+  <header>
+    <nav class="wrap" aria-label="Primary navigation">
+      <a class="brand" href="/eyouel-media/"><img src="/eyouel-media/assets/eyouel-media-icon.svg" alt="Eyouel Media icon"><span>Eyouel Media</span></a>
+      <div class="navlinks">
+        <a href="/eyouel-media/review-demo.html">Reviewer Demo</a>
+        <a href="/eyouel-media/post.html">Posting Workflow</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a class="login-link" href="/eyouel-media/login.html">Creator Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <div class="hero">
+      <section aria-labelledby="hero-title">
+        <p class="eyebrow">Faith-based creator publishing</p>
+        <h1 id="hero-title">Eyouel Media</h1>
+        <p class="lead">A creator-owned publishing workflow for original faith-based motivational videos. The creator reviews each video, caption, privacy setting, interaction control, disclosure, and final consent before content is posted to TikTok.</p>
+        <div class="actions">
+          <a class="button primary" href="/eyouel-media/login.html">Continue with TikTok</a>
+          <a class="button" href="/eyouel-media/review-demo.html">Open Reviewer Demo</a>
+        </div>
+        <p class="note">This app is for the authenticated owner’s own original content only. It does not post on behalf of other users and does not read or post to third-party accounts.</p>
+      </section>
+
+      <aside class="panel" aria-label="Creator publishing dashboard preview">
+        <h2>Creator Studio</h2>
+        <div class="dashboard">
+          <div class="content-row">
+            <div><strong>Morning Encouragement</strong><span>Original faith-based motivational video</span></div>
+            <span class="up">Ready</span>
+          </div>
+          <div class="content-row">
+            <div><strong>Prayer Reflection</strong><span>Caption and privacy under creator review</span></div>
+            <span class="flat">Review</span>
+          </div>
+          <div class="content-row">
+            <div><strong>Weekly Message</strong><span>Draft fallback available</span></div>
+            <span class="flat">Draft</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <section aria-labelledby="workspace-title">
+      <h2 id="workspace-title">What The App Does</h2>
+      <div class="workspace-grid">
+        <article class="workspace-panel">
+          <div class="workspace-head">
+            <span class="step">Creator workspace</span>
+            <strong>Original content only</strong>
+          </div>
+          <p>Creators prepare short faith-based motivational videos, review captions and disclosures, then choose Direct Post or TikTok draft upload.</p>
+          <div class="setting-row">
+            <div><strong>Content ownership</strong><span>All video content belongs to the authenticated creator.</span></div>
+            <span class="up">Required</span>
+          </div>
+          <div class="setting-row">
+            <div><strong>Creator approval</strong><span>Direct Post requires explicit approval inside the app.</span></div>
+            <span class="up">Required</span>
+          </div>
+        </article>
+
+        <article class="workspace-panel">
+          <div class="workspace-head">
+            <span class="step">TikTok integration</span>
+            <strong>Login Kit + Content Posting API</strong>
+          </div>
+          <div class="setting-row">
+            <div><strong>Login Kit</strong><span>Requests user.info.basic for creator identification.</span></div>
+            <span class="up">Configured</span>
+          </div>
+          <div class="setting-row">
+            <div><strong>video.publish</strong><span>Posts only after the authenticated creator reviews and consents.</span></div>
+            <span class="up">Enabled</span>
+          </div>
+          <div class="setting-row">
+            <div><strong>video.upload</strong><span>Can send reviewed MP4s to TikTok drafts for final editing.</span></div>
+            <span class="up">Enabled</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="privacy" aria-labelledby="privacy-title">
+      <h2 id="privacy-title">Privacy Policy</h2>
+      <div class="card">
+        <p><em>Last updated: July 25, 2026</em></p>
+        <p>Eyouel Media processes TikTok authorization data only to authenticate the creator, retrieve posting settings, prepare creator-owned faith-based motivational videos for review, and publish creator-approved content through TikTok’s Content Posting API.</p>
+        <p>OAuth tokens, refresh tokens, and client secrets are handled by the server-side posting service and are not embedded in this public website. We do not sell personal information.</p>
+        <p>Creators control whether to authorize TikTok and whether each post is Direct Posted or uploaded as a draft. Creators may revoke app access from TikTok settings at any time.</p>
+      </div>
+    </section>
+
+    <section id="terms" aria-labelledby="terms-title">
+      <h2 id="terms-title">Terms Of Service</h2>
+      <div class="card">
+        <p><em>Last updated: July 25, 2026</em></p>
+        <p>Eyouel Media provides a creator-owned workflow for preparing, reviewing, and publishing original faith-based motivational videos. Users are responsible for ensuring they own or have rights to all content they publish.</p>
+        <p>Content is not posted through Direct Post until the creator reviews the video, caption, privacy setting, interaction settings, disclosures, and confirms final posting consent.</p>
+        <p>Users may not publish unlawful, misleading, infringing, harmful, or unauthorized content, and may not use the service to post on behalf of another person without authorization.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>&copy; 2026 Eyouel Media. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="/eyouel-media/review-demo.html">Reviewer Demo</a>
+        <a href="/eyouel-media/post.html">Posting Workflow</a>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#terms">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

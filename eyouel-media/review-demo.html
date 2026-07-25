@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reviewer Demo - Eyouel Media</title>
+  <meta name="description" content="Interactive TikTok Login Kit and Content Posting API mockup demo for Eyouel Media app review.">
+  <link rel="icon" type="image/svg+xml" href="/eyouel-media/assets/eyouel-media-icon.svg">
+  <link rel="stylesheet" href="/eyouel-media/assets/site.css">
+</head>
+<body>
+  <header>
+    <nav class="wrap" aria-label="Primary navigation">
+      <a class="brand" href="/eyouel-media/"><img src="/eyouel-media/assets/eyouel-media-icon.svg" alt="Eyouel Media icon"><span>Eyouel Media</span></a>
+      <div class="navlinks">
+        <a href="/eyouel-media/">Home</a>
+        <a href="/eyouel-media/post.html">Posting Workflow</a>
+        <a href="/eyouel-media/#privacy">Privacy</a>
+        <a href="/eyouel-media/#terms">Terms</a>
+        <a class="login-link" href="/eyouel-media/login.html">Creator Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <p class="eyebrow">TikTok app review mockup</p>
+    <h1>End-To-End Review Demo</h1>
+    <p class="lead">This interactive mockup demonstrates the complete TikTok flow inside Eyouel Media: Login Kit, redirect callback, creator info query, Direct Post review, FILE_UPLOAD transfer, status polling, and video.upload draft fallback.</p>
+    <p class="note">This reviewer demo uses the creator’s own original faith-based motivational videos only. The app posts only to the authenticated owner’s connected TikTok account.</p>
+
+    <section class="review-demo-shell" aria-label="Interactive reviewer demo">
+      <aside class="demo-steps" aria-label="Demo steps">
+        <button class="demo-step active" type="button" data-step="0"><span>01</span><strong>Official website</strong></button>
+        <button class="demo-step" type="button" data-step="1"><span>02</span><strong>Login Kit</strong></button>
+        <button class="demo-step" type="button" data-step="2"><span>03</span><strong>Redirect callback</strong></button>
+        <button class="demo-step" type="button" data-step="3"><span>04</span><strong>Creator info</strong></button>
+        <button class="demo-step" type="button" data-step="4"><span>05</span><strong>Direct Post review</strong></button>
+        <button class="demo-step" type="button" data-step="5"><span>06</span><strong>Upload and status</strong></button>
+        <button class="demo-step" type="button" data-step="6"><span>07</span><strong>Draft fallback</strong></button>
+      </aside>
+
+      <section class="demo-stage panel" aria-live="polite">
+        <div class="demo-browser-bar">
+          <span></span>
+          <span></span>
+          <span></span>
+          <strong id="demo-url">https://eyouel-cloud.github.io/eyouel-media/</strong>
+        </div>
+
+        <div class="demo-topline">
+          <div>
+            <p class="eyebrow" id="demo-kicker">Official website</p>
+            <h2 id="demo-title">Eyouel Media Website</h2>
+          </div>
+          <span id="demo-status" class="status-chip">Review ready</span>
+        </div>
+
+        <div id="demo-content" class="demo-content"></div>
+
+        <div class="demo-actions">
+          <button id="prev-step" type="button">Previous</button>
+          <button id="next-step" class="primary" type="button">Next Step</button>
+        </div>
+      </section>
+    </section>
+
+    <section aria-labelledby="review-script-title">
+      <h2 id="review-script-title">What The Upload Video Should Show</h2>
+      <div class="cards two-cards">
+        <article class="card">
+          <span class="step">Products</span>
+          <h3>Login Kit and Content Posting API</h3>
+          <p>Show the creator opening the website, authorizing with TikTok, returning to the callback URL, and entering the posting workflow.</p>
+        </article>
+        <article class="card">
+          <span class="step">Scopes</span>
+          <h3>user.info.basic, video.publish, video.upload</h3>
+          <p>Show creator info, Direct Post controls, consent, upload progress, status polling, and the TikTok draft fallback.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>&copy; 2026 Eyouel Media. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="/eyouel-media/">Home</a>
+        <a href="/eyouel-media/login.html">Creator Login</a>
+        <a href="/eyouel-media/post.html">Posting Workflow</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/eyouel-media/review-demo.js"></script>
+</body>
+</html>
