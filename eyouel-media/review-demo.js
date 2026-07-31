@@ -1,7 +1,7 @@
 const demoSteps = [
   {
     kicker: 'Official website',
-    title: 'Eyouel Media Website',
+    title: 'Eyouel Media Creator Console',
     status: 'Review ready',
     url: 'https://eyouel-cloud.github.io/eyouel-media/',
     html: `
@@ -9,14 +9,14 @@ const demoSteps = [
         <article class="demo-product-card">
           <span class="step">Creator studio</span>
           <h3>Faith-Based Video Queue</h3>
-          <p>The creator manages original motivational videos, caption drafts, and posting status inside the web app.</p>
+          <p>The Website URL opens directly to the creator console with video queue, review workspace, caption editor, posting checks, and policy pages.</p>
           <div class="content-row"><div><strong>Morning Encouragement</strong><span>Original creator-owned video</span></div><span class="up">Ready</span></div>
           <div class="content-row"><div><strong>Prayer Reflection</strong><span>Creator review required</span></div><span class="flat">Review</span></div>
         </article>
         <article class="demo-product-card">
           <span class="step">Website URL</span>
           <h3>Full App Surface</h3>
-          <p>The site includes creator login, posting workflow, terms, privacy, and reviewer demo pages.</p>
+          <p>The site is not a login-only page. Reviewers can inspect the dashboard, media library, Direct Post controls, draft fallback, terms, and privacy policy without signing in.</p>
         </article>
       </div>
     `
