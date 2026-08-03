@@ -811,6 +811,37 @@ textarea {
     linear-gradient(180deg, rgba(34, 199, 242, .18), rgba(7, 17, 31, .88));
 }
 
+.policy-hero {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 22px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.policy-hero img {
+  width: 104px;
+  height: 104px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 8px;
+  background: rgba(7, 17, 31, .72);
+  display: block;
+}
+
+.policy-hero h1 {
+  font-size: clamp(36px, 5vw, 56px);
+}
+
+.policy-layout {
+  display: grid;
+  gap: 16px;
+  padding-top: 0;
+}
+
+.policy-layout .card {
+  box-shadow: none;
+}
+
 footer {
   border-top: 1px solid var(--line);
   color: #8390a8;
@@ -835,17 +866,18 @@ footer {
   .form-grid,
   .row,
   .cards,
-    .two-cards,
-    .workspace-grid,
-    .app-toolbar,
-    .metric-strip,
-    .console-grid,
-    .review-workspace,
-    .library-grid,
-    .review-demo-shell,
-    .demo-product-grid,
-    .creator-info-grid,
-    .composer-grid,
+  .two-cards,
+  .workspace-grid,
+  .app-toolbar,
+  .metric-strip,
+  .console-grid,
+  .review-workspace,
+  .library-grid,
+  .policy-hero,
+  .review-demo-shell,
+  .demo-product-grid,
+  .creator-info-grid,
+  .composer-grid,
   .upload-grid {
     grid-template-columns: 1fr;
   }
