@@ -1,7 +1,7 @@
 const demoSteps = [
   {
     kicker: 'Official website',
-    title: 'Eyouel Markets Website',
+    title: 'The Data Pitch Publisher Website',
     status: 'Review ready',
     url: 'https://eyouel-cloud.github.io/markets/',
     html: `
@@ -28,7 +28,7 @@ const demoSteps = [
     url: 'https://eyouel-cloud.github.io/markets/login.html',
     html: `
       <div class="auth-card">
-        <img src="/markets/assets/eyouel-markets-icon.png" alt="Eyouel Markets icon">
+        <img src="/markets/assets/data-pitch-icon.svg" alt="The Data Pitch Publisher icon">
         <div>
           <h3>Continue with TikTok</h3>
           <p>The creator starts OAuth with client_key, response_type=code, redirect_uri, state, and requested scopes.</p>
@@ -66,9 +66,9 @@ const demoSteps = [
     html: `
       <div class="creator-info-grid">
         <article class="creator-card">
-          <div class="avatar-large">EM</div>
+          <div class="avatar-large">DP</div>
           <div>
-            <h3>@eyouelmarkets</h3>
+            <h3>@datapitchpublisher</h3>
             <p>Display name and avatar are shown from user.info.basic.</p>
           </div>
         </article>
@@ -92,7 +92,7 @@ const demoSteps = [
     html: `
       <div class="composer-grid">
         <div class="demo-video-preview">
-          <img src="/markets/assets/eyouel-markets-icon.png" alt="Eyouel Markets icon">
+          <img src="/markets/assets/data-pitch-icon.svg" alt="The Data Pitch Publisher icon">
           <strong>S&P 500 Morning Brief</strong>
           <span>Education only. Not financial advice.</span>
         </div>

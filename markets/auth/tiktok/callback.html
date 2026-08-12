@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TikTok Authorization Callback - Eyouel Markets</title>
-  <meta name="description" content="TikTok OAuth callback for Eyouel Markets creator authorization.">
-  <link rel="icon" type="image/png" href="/markets/assets/eyouel-markets-icon.png">
-  <link rel="shortcut icon" href="/markets/assets/eyouel-markets-icon.png">
-  <link rel="apple-touch-icon" href="/markets/assets/eyouel-markets-icon.png">
+  <title>TikTok Authorization Callback - The Data Pitch Publisher</title>
+  <meta name="description" content="TikTok OAuth callback for The Data Pitch Publisher creator authorization.">
+  <link rel="icon" type="image/png" href="/markets/assets/data-pitch-icon.png">
+  <link rel="shortcut icon" href="/markets/assets/data-pitch-icon.png">
+  <link rel="apple-touch-icon" href="/markets/assets/data-pitch-icon.png">
   <meta name="theme-color" content="#071225">
   <link rel="stylesheet" href="/markets/assets/site.css">
 </head>
 <body>
   <main class="login-card">
     <section class="panel" aria-labelledby="callback-title">
-      <a class="brand" href="/markets/"><img src="/markets/assets/eyouel-markets-icon.png" alt="Eyouel Markets icon"><span>Eyouel Markets</span></a>
+      <a class="brand" href="/markets/"><img src="/markets/assets/data-pitch-icon.svg" alt="The Data Pitch Publisher icon"><span>The Data Pitch Publisher</span></a>
       <p class="eyebrow">Authorization callback</p>
       <h1 id="callback-title">TikTok Authorization Callback</h1>
       <p>This page confirms TikTok can return creators to the configured redirect URI after authorization. The production posting service redeems the short-lived code on the server before calling TikTok's Content Posting API.</p>
@@ -35,7 +35,7 @@
     const error = params.get('error');
     const code = params.get('code');
     const state = params.get('state');
-    const expectedState = sessionStorage.getItem('eyouel_markets_oauth_state');
+    const expectedState = sessionStorage.getItem('data_pitch_oauth_state');
 
     if (error) {
       status.textContent = 'TikTok returned an authorization error: ' + error + '. Please return to Creator Login and try again.';

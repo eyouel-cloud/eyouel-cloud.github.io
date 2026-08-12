@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="The Data Pitch Publisher app icon">
+  <rect width="1024" height="1024" rx="180" fill="#f7fbf3"/>
+  <circle cx="512" cy="512" r="408" fill="#4f8f61"/>
+  <circle cx="512" cy="512" r="316" fill="none" stroke="#eff7ec" stroke-width="26"/>
+  <path d="M302 688h420" stroke="#eff7ec" stroke-width="30" stroke-linecap="round"/>
+  <path d="M362 650V512M486 650V402M610 650V462" stroke="#eff7ec" stroke-width="44" stroke-linecap="round"/>
+  <path d="M288 708 735 262" stroke="#f0cf47" stroke-width="32" stroke-linecap="round"/>
+  <path d="m657 258 84-8-10 84" fill="none" stroke="#f0cf47" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

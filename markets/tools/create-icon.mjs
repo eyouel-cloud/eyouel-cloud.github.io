@@ -6,52 +6,35 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const output = path.resolve(__dirname, '../assets/eyouel-markets-icon.png');
+const output = path.resolve(__dirname, '../assets/data-pitch-icon.png');
 const width = 1024;
 const height = 1024;
 const pixels = Buffer.alloc(width * height * 4);
 
 const colors = {
-  navy: [7, 18, 37, 255],
-  grid: [17, 38, 70, 255],
-  cyan: [34, 199, 242, 255],
-  gold: [242, 201, 76, 255],
-  green: [39, 217, 136, 255],
-  white: [239, 246, 255, 255]
+  white: [255, 255, 255, 255],
+  green: [75, 140, 92, 255],
+  mint: [219, 244, 225, 255],
+  gold: [242, 201, 76, 255]
 };
 
 for (let y = 0; y < height; y += 1) {
   for (let x = 0; x < width; x += 1) {
-    setPixel(x, y, colors.navy);
+    setPixel(x, y, colors.white);
   }
 }
 
-for (let x = 96; x <= width - 96; x += 96) {
-  fillRect(x, 96, 2, height - 192, colors.grid);
-}
-for (let y = 96; y <= height - 96; y += 96) {
-  fillRect(96, y, width - 192, 2, colors.grid);
-}
-
-fillRect(250, 286, 86, 420, colors.cyan);
-fillRect(250, 286, 278, 82, colors.cyan);
-fillRect(250, 455, 232, 76, colors.cyan);
-fillRect(250, 624, 278, 82, colors.cyan);
-
-fillRect(570, 286, 78, 420, colors.gold);
-fillRect(790, 286, 78, 420, colors.gold);
-drawThickLine(640, 300, 720, 505, 64, colors.gold);
-drawThickLine(720, 505, 800, 300, 64, colors.gold);
-
-drawThickLine(244, 792, 410, 742, 18, colors.green);
-drawThickLine(410, 742, 548, 772, 18, colors.green);
-drawThickLine(548, 772, 690, 684, 18, colors.green);
-drawThickLine(690, 684, 838, 718, 18, colors.green);
-fillCircle(244, 792, 20, colors.white);
-fillCircle(410, 742, 20, colors.white);
-fillCircle(548, 772, 20, colors.white);
-fillCircle(690, 684, 20, colors.white);
-fillCircle(838, 718, 20, colors.white);
+fillCircle(512, 512, 430, colors.green);
+strokeCircle(512, 512, 324, 26, colors.mint);
+drawThickLine(222, 684, 802, 684, 26, colors.mint);
+drawThickLine(254, 756, 770, 756, 18, colors.mint);
+fillRect(314, 526, 58, 134, colors.mint);
+fillRect(454, 442, 58, 218, colors.mint);
+fillRect(594, 348, 58, 312, colors.mint);
+drawThickLine(280, 706, 468, 584, 30, colors.gold);
+drawThickLine(468, 584, 684, 372, 30, colors.gold);
+drawThickLine(684, 372, 752, 372, 30, colors.gold);
+drawThickLine(684, 372, 684, 440, 30, colors.gold);
 
 writeFileSync(output, encodePng(width, height, pixels));
 console.log(output);
@@ -82,6 +65,23 @@ function fillCircle(cx, cy, radius, color) {
       const dx = x - cx;
       const dy = y - cy;
       if (dx * dx + dy * dy <= radiusSquared) {
+        setPixel(x, y, color);
+      }
+    }
+  }
+}
+
+function strokeCircle(cx, cy, radius, thickness, color) {
+  const outer = radius + thickness / 2;
+  const inner = radius - thickness / 2;
+  const outerSquared = outer * outer;
+  const innerSquared = inner * inner;
+  for (let y = Math.floor(cy - outer); y <= Math.ceil(cy + outer); y += 1) {
+    for (let x = Math.floor(cx - outer); x <= Math.ceil(cx + outer); x += 1) {
+      const dx = x - cx;
+      const dy = y - cy;
+      const distanceSquared = dx * dx + dy * dy;
+      if (distanceSquared <= outerSquared && distanceSquared >= innerSquared) {
         setPixel(x, y, color);
       }
     }
