@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Data Pitch Publisher Reviewer Demo</title>
+  <meta name="description" content="Reviewer demo for The Data Pitch Publisher.">
+  <link rel="icon" type="image/svg+xml" href="/markets/assets/data-pitch-icon.svg">
+  <link rel="stylesheet" href="/markets/assets/site.css">
+</head>
+<body>
+  <header>
+    <nav class="wrap" aria-label="Primary navigation">
+      <a class="brand" href="/the-data-pitch-publisher/"><img src="/markets/assets/data-pitch-icon.svg" alt="The Data Pitch Publisher icon"><span>The Data Pitch Publisher</span></a>
+      <div class="navlinks">
+        <a href="/the-data-pitch-publisher/post.html">Posting Workflow</a>
+        <a href="/the-data-pitch-publisher/privacy.html">Privacy Policy</a>
+        <a href="/the-data-pitch-publisher/terms.html">Terms of Service</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="app-console" aria-labelledby="demo-title">
+      <div class="app-toolbar panel">
+        <div>
+          <p class="eyebrow">Reviewer visible demo</p>
+          <h1 id="demo-title">The Data Pitch Publisher</h1>
+          <p class="lead">This demo shows the complete creator review flow for an original football analysis video before it is published or sent to TikTok drafts.</p>
+        </div>
+      </div>
+
+      <div class="console-grid">
+        <aside class="panel queue-panel" aria-label="Video queue">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Queue</p>
+              <h2>Football Videos</h2>
+            </div>
+            <span class="status-chip">Reviewer visible</span>
+          </div>
+          <div class="queue-list">
+            <button class="queue-item active" type="button">
+              <strong>Match Analysis</strong>
+              <span>Ready for final TikTok review</span>
+              <small>0:45 MP4</small>
+            </button>
+            <button class="queue-item" type="button">
+              <strong>Player Breakdown</strong>
+              <span>Caption edits pending</span>
+              <small>0:38 MP4</small>
+            </button>
+            <button class="queue-item" type="button">
+              <strong>Tactical Recap</strong>
+              <span>Send to TikTok draft fallback</span>
+              <small>0:52 MP4</small>
+            </button>
+          </div>
+        </aside>
+
+        <section class="panel review-panel" aria-label="Creator review workspace">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Review workspace</p>
+              <h2>Match Analysis</h2>
+            </div>
+            <span class="status-chip">video.publish ready</span>
+          </div>
+          <div class="review-workspace">
+            <div class="phone-preview">
+              <img src="/markets/assets/data-pitch-icon.svg" alt="The Data Pitch Publisher icon">
+              <strong>Breaking down the press, spacing, and final-third choices.</strong>
+              <span>Original creator-owned football analysis video</span>
+              <div class="sun-line" aria-hidden="true"></div>
+            </div>
+            <div class="editor-panel">
+              <label for="caption">Caption</label>
+              <textarea id="caption">A quick football analysis breakdown of the key tactical choices from today's match. Original creator-owned video.</textarea>
+              <div class="row">
+                <div>
+                  <label for="privacy-setting">Privacy</label>
+                  <select id="privacy-setting">
+                    <option>PUBLIC_TO_EVERYONE</option>
+                    <option>FOLLOWER_OF_CREATOR</option>
+                    <option>SELF_ONLY</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="duration-check">Duration</label>
+                  <input id="duration-check" type="text" value="0:45, within creator limit" readonly>
+                </div>
+              </div>
+              <div class="checks compact-checks">
+                <label><input type="checkbox" checked> Creator owns or has cleared all video, audio, and visual materials</label>
+                <label><input type="checkbox" checked> Caption and privacy setting reviewed</label>
+                <label><input type="checkbox" checked> Comment, duet, stitch, disclosure, and final consent reviewed</label>
+              </div>
+              <div class="actions">
+                <button class="button primary" type="button">Direct Post with video.publish</button>
+                <button class="button secondary" type="button">Send draft with video.upload</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="panel publish-panel" aria-label="TikTok publishing status">
+          <p class="eyebrow">TikTok integration</p>
+          <h2>API Usage</h2>
+          <div class="setting-row">
+            <div><strong>Login Kit</strong><span>Creator authorizes The Data Pitch Publisher.</span></div>
+            <span class="up">Used</span>
+          </div>
+          <div class="setting-row">
+            <div><strong>user.info.basic</strong><span>Displays authenticated TikTok profile before posting.</span></div>
+            <span class="up">Used</span>
+          </div>
+          <div class="setting-row">
+            <div><strong>video.publish</strong><span>Direct Post begins only after creator approval.</span></div>
+            <span class="up">Ready</span>
+          </div>
+          <div class="setting-row">
+            <div><strong>video.upload</strong><span>Reviewed videos can be sent as TikTok drafts.</span></div>
+            <span class="flat">Fallback</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
